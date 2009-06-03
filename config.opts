@@ -1,0 +1,18 @@
+# use these options for configure if no options a provided on the cmdline
+#AUTOGEN_FLAGS="--ac=2.59 --am=-1.8"
+CONFIGURE_FLAGS="CXX=g++ CXXFLAGS='-O3 -funroll-loops -DDEBUG' F77=gfortran --disable-documentation \
+  --prefix=/share/dune/Dune/dune_trunk_$HOSTTYPE \
+  --with-metis=/share/dune/Modules/modules_$HOSTTYPE/metis \
+  --with-alugrid=/share/dune/Modules/modules_$HOSTTYPE/ALUGrid-1.14 \
+  --with-alberta=/share/dune/Modules/modules_$HOSTTYPE/alberta-2.0.1 \
+  --with-grid-dim=3 \
+  --with-grid-type=ALUGRID_SIMPLEX \
+  --disable-mpi \
+  --disable-mpiruntest \
+  --disable-compilercheck \
+  --disable-parallel"
+MAKE_FLAGS=
+#  --enable-parallel \
+#  --with-metis=/share/dune/Modules/modules_$HOSTTYPE/metis \
+# --with-lapack=atlas \
+#  --with-blas=atlas" 
