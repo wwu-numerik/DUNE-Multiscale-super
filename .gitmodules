@@ -1,0 +1,27 @@
+[submodule "dune-common"]
+	path = dune-common
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-common
+[submodule "dune-fem"]
+	path = dune-fem
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-fem
+[submodule "dune-femhowto"]
+	path = dune-femhowto
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-femhowto
+[submodule "dune-grid"]
+	path = dune-grid
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-grid
+[submodule "dune-grid-howto"]
+	path = dune-grid-howto
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-grid-howto
+[submodule "dune-istl"]
+	path = dune-istl
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-istl
+[submodule "dune-localfunctions"]
+	path = dune-localfunctions
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-localfunctions
+[submodule "dune-pdelab"]
+	path = dune-pdelab
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-pdelab
+[submodule "dune-pdelab-howto"]
+	path = dune-pdelab-howto
+	url = duneadm@jax.uni-muenster.de:git/dune/dune-pdelab-howto
