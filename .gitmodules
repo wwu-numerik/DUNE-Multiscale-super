@@ -1,27 +1,27 @@
 [submodule "dune-common"]
 	path = dune-common
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-common
+	url = git@dune-project.uni-muenster.de:projects/dune-common
 [submodule "dune-fem"]
 	path = dune-fem
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-fem
+	url = git@dune-project.uni-muenster.de:projects/dune-fem
 [submodule "dune-femhowto"]
 	path = dune-femhowto
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-femhowto
+	url = git@dune-project.uni-muenster.de:projects/dune-femhowto
 [submodule "dune-grid"]
 	path = dune-grid
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-grid
+	url = git@dune-project.uni-muenster.de:projects/dune-grid
 [submodule "dune-grid-howto"]
 	path = dune-grid-howto
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-grid-howto
+	url = git@dune-project.uni-muenster.de:projects/dune-grid-howto
 [submodule "dune-istl"]
 	path = dune-istl
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-istl
+	url = git@dune-project.uni-muenster.de:projects/dune-istl
 [submodule "dune-localfunctions"]
 	path = dune-localfunctions
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-localfunctions
+	url = git@dune-project.uni-muenster.de:projects/dune-localfunctions
 [submodule "dune-pdelab"]
 	path = dune-pdelab
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-pdelab
+	url = git@dune-project.uni-muenster.de:projects/dune-pdelab
 [submodule "dune-pdelab-howto"]
 	path = dune-pdelab-howto
-	url = duneadm@jax.uni-muenster.de:git/dune/dune-pdelab-howto
+	url = git@dune-project.uni-muenster.de:projects/dune-pdelab-howto
