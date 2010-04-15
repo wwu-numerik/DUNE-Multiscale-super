@@ -1,0 +1,29 @@
+# use these options for configure if no options a provided on the cmdline
+#AUTOGEN_FLAGS="--ac=2.59 --am=-1.8"
+CONFIGURE_FLAGS="CXX=mpic++ CXXFLAGS=' -DDEBUG -DMPIPP_H -DENABLE_MPI=1' F77=gfortran \
+  LDFLAGS='-L/usr/lib64 -lgfortran -lblas' \
+  --prefix=/share/dune/Dune/dune_felix-rene_x86_64 \
+  --with-metis=/share/dune/Modules/modules_$HOSTTYPE/metis \
+  --with-alugrid=/share/dune/Modules/modules_x86_64/ALUGrid-1.22_rene \
+  --with-ug=/share/dune/Modules/modules_x86_64/ug \
+  --x-includes=/usr/X11R6/include \
+  --x-libraries=/usr/X11R6/lib64 \
+  --disable-documentation \
+  --enable-dunedevel \
+  --with-grid-dim=2 \
+  --with-grid-type=ALUGRID_CONFORM \
+  --enable-parallel \
+  --enable-mpi \
+  --with-metis=/share/dune/Modules/modules_$HOSTTYPE/metis \
+  --with-mpi=/usr/o0/openmpi-1.2.3/ix86_64-ibm-linux\lib \
+  --with-party=/share/dune/Modules/modules_x86_64/party/party-1.99 \
+  --with-parmetis=/share/dune/Modules/modules_x86_64/ParMetis-3.1.1 \
+   --with-lapack=atlas \
+  --with-blas=atlas"
+MAKE_FLAGS=
+#  --enable-parallel \
+#  --with-metis=/share/dune/Modules/modules_$HOSTTYPE/metis \
+#  --enable-mpi \
+#  --enable-parallel \
+#  --with-mpi=/usr/o0/openmpi-1.2.3/ix86_64-ibm-linux\lib "
+#  --with-grape=/share/dune/Modules/modules_$HOSTTYPE/grape \

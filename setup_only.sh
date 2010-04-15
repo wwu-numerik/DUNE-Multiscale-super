@@ -1,13 +1,9 @@
 #!/bin/bash
 
-#!/bin/bash
-
-if [ $# == 0 ]; then
-	echo "needs module name as parameter"
+if [ x$2 = x ] ; then
+	OPTS=config.opts.wwu_no_documentation
 else
-	if [ $# == 1 ]; then
-		./dune-common/bin/dunecontrol --only=$1 --opts=config.opts all
-	else
-		./dune-common/bin/dunecontrol --only=$1 --opts=$2 all
-	fi
+	OPTS=${2}
 fi
+ln -sf ${OPTS} config.opts.last
+./dune-common/bin/dunecontrol --only=$1 --opts=${OPTS} all

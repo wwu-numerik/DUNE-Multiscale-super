@@ -1,7 +1,9 @@
 #!/bin/bash
 
-if [ $# == 0 ]; then
-	./dune-common/bin/dunecontrol --opts=config.opts all
+if [ x$1 = x ] ; then
+	OPTS=config.opts.wwu_no_documentation
 else
-	./dune-common/bin/dunecontrol --opts=$1 all	
+	OPTS=${1}
 fi
+ln -sf ${OPTS} config.opts.last
+./dune-common/bin/dunecontrol --opts=${1} all
