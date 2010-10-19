@@ -2,7 +2,7 @@
 
 branch=$(git branch --no-color | cut -f 2 -d " ")
 
-for i in $(git submodule status | cut -f 2 -d " " ) ; do
+for i in $(git submodule status | cut -f 3 -d " " ) ; do
 	cd ${i}
 	git fetch origin
 	new=$(git rev-parse origin/$branch)
