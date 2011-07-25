@@ -3,10 +3,10 @@
 	url = http://users.dune-project.org/repositories/projects/dune-common.git
 [submodule "dune-fem"]
 	path = dune-fem
-	url = git@dune-project.uni-muenster.de:projects/dune-fem
+	url = http://dune-project.uni-muenster.de/repos/projects/dune-fem.git
 [submodule "dune-femhowto"]
 	path = dune-femhowto
-	url = git@dune-project.uni-muenster.de:projects/dune-femhowto
+	url = http://dune-project.uni-muenster.de/repos/projects/dune-femhowto.git
 [submodule "dune-grid"]
 	path = dune-grid
 	url = http://users.dune-project.org/repositories/projects/dune-grid.git
@@ -21,7 +21,7 @@
 	url = http://users.dune-project.org/repositories/projects/dune-localfunctions.git
 [submodule "dune-pdelab"]
 	path = dune-pdelab
-	url = git@dune-project.uni-muenster.de:projects/dune-pdelab
+	url = http://dune-project.uni-muenster.de/repos/projects/dune-pdelab.git
 [submodule "dune-pdelab-howto"]
 	path = dune-pdelab-howto
-	url = git@dune-project.uni-muenster.de:projects/dune-pdelab-howto
+	url = http://dune-project.uni-muenster.de/repos/projects/dune-pdelab-howto.git
