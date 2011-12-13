@@ -19,3 +19,6 @@
 [submodule "dune-localfunctions"]
 	path = dune-localfunctions
 	url = http://users.dune-project.org/repositories/projects/dune-localfunctions.git
+[submodule "dune-geometry"]
+	path = dune-geometry
+	url = http://users.dune-project.org/repositories/projects/dune-geometry.git
