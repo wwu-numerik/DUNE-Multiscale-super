@@ -19,9 +19,3 @@
 [submodule "dune-localfunctions"]
 	path = dune-localfunctions
 	url = http://users.dune-project.org/repositories/projects/dune-localfunctions.git
-[submodule "dune-pdelab"]
-	path = dune-pdelab
-	url = http://dune-project.uni-muenster.de/repos/projects/dune-pdelab.git
-[submodule "dune-pdelab-howto"]
-	path = dune-pdelab-howto
-	url = http://dune-project.uni-muenster.de/repos/projects/dune-pdelab-howto.git
