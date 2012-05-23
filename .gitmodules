@@ -22,3 +22,6 @@
 [submodule "dune-geometry"]
 	path = dune-geometry
 	url = http://users.dune-project.org/repositories/projects/dune-geometry.git
+[submodule "dune-stuff"]
+	path = dune-stuff
+	url = http://dune-project.uni-muenster.de/repos/projects/dune-stuff.git
