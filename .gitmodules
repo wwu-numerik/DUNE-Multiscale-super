@@ -4,15 +4,9 @@
 [submodule "dune-fem"]
 	path = dune-fem
 	url = http://users.dune-project.org/repositories/projects/dune-fem-internals.git
-[submodule "dune-femhowto"]
-	path = dune-femhowto
-	url = http://users.dune-project.org/repositories/projects/dune-femhowto-intern.git
 [submodule "dune-grid"]
 	path = dune-grid
 	url = http://users.dune-project.org/repositories/projects/dune-grid.git
-[submodule "dune-grid-howto"]
-	path = dune-grid-howto
-	url = http://users.dune-project.org/repositories/projects/dune-grid-howto.git
 [submodule "dune-istl"]
 	path = dune-istl
 	url = http://users.dune-project.org/repositories/projects/dune-istl.git
