@@ -19,3 +19,9 @@
 [submodule "dune-stuff"]
 	path = dune-stuff
 	url = http://dune-project.uni-muenster.de/repos/projects/dune-stuff.git
+[submodule "dune-multiscale"]
+	path = dune-multiscale
+	url = http://dune-project.uni-muenster.de/repos/projects/dune-multiscale.git
+[submodule "dune-subgrid"]
+	path = dune-subgrid
+	url = http://users.dune-project.org/repositories/projects/dune-subgrid.git
