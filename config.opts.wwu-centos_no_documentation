@@ -1,0 +1,6 @@
+CONFIGURE_FLAGS="CXX=g++ CC=gcc F77=gfortran CXXFLAGS='-g3 -ggdb -std=c++03 -fpermissive  -std=c++03' \
+	LDFLAGS=/usr/lib64/libgfortran.so.1.0.0 \
+  --with-metis=/share/dune/Modules/modules_$HOSTTYPE/metis \
+  --enable-dunedevel \
+  --with-alugrid=/share/dune/modules/modules_x86_64/alugrid/alugrid-1.22 \
+  --with-alberta=/share/dune/Modules/modules_$HOSTTYPE/alberta "
