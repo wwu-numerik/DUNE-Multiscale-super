@@ -1,4 +1,4 @@
-CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG  -g3 -ggdb -fpermissive  -std=c++03' \
+CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb -std=c++0x' \
   --enable-fieldvector-size-is-method \
   --with-boost=yes \
   --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.50 \
