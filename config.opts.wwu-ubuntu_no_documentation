@@ -1,4 +1,4 @@
-CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-O3 -g3 ggdb' F77=gfortran \
+CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-O3 -g3 -ggdb -std=c++0x' F77=gfortran \
 	--prefix=$PWD \
 	--with-metis=/share/dune/Modules/modules_$HOSTTYPE/metis \
 	--with-party=/share/dune/Modules/modules_x86_64/party_1.99 \
