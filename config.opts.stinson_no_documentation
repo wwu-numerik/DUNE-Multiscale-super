@@ -1,7 +1,7 @@
-CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb -std=c++0x' \
+CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb -std=c++0x -O0' \
   --enable-fieldvector-size-is-method \
   --with-boost=/opt/boost-1.49 \
-  --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.50 \
+  --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
   --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
   --enable-dunedevel \
   --disable-documentation "
