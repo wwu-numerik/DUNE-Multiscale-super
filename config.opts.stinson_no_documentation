@@ -4,4 +4,4 @@ CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb
   --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
   --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
   --enable-dunedevel \
-  --disable-documentation "
+  --disable-documentation  INKSCAPE=no"

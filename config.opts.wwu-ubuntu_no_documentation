@@ -11,4 +11,4 @@ CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-O3 -g3 -ggdb -std=c++0x' F77=gfortran
   --enable-embedded-python \
 	--with-grid-dim=2 \
 	--with-grid-type=ALBERTAGRID \
-	--disable-documentation "
+	--disable-documentation INKSCAPE=no"

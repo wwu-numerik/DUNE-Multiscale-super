@@ -5,4 +5,4 @@ CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc CXXFLAGS='-fno-strict-aliasing -DNDEBUG -st
 	--with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
 	--with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
 	--enable-dunedevel \
-	--disable-documentation "
+	--disable-documentation  INKSCAPE=no"
