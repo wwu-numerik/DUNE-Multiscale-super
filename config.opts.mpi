@@ -1,7 +1,6 @@
-CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc CXXFLAGS='-fno-strict-aliasing -DNDEBUG -std=c++0x -O3' \
+CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc CXXFLAGS='-fno-strict-aliasing -g -std=c++0x -O3' \
 	--enable-fieldvector-size-is-method \
 	--enable-parallel \
-	--with-boost=/opt/boost-1.49 \
 	--with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
 	--with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
 	--enable-dunedevel \
