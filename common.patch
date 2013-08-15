@@ -1,0 +1,13 @@
+diff --git i/cmake/modules/DuneTestMacros.cmake w/cmake/modules/DuneTestMacros.cmake
+index a1c4ae4..3e7300b 100644
+--- i/cmake/modules/DuneTestMacros.cmake
++++ w/cmake/modules/DuneTestMacros.cmake
+@@ -27,7 +27,7 @@ macro(test_dep)
+ 
+   foreach(_dir ${_dirs})
+     string(REGEX REPLACE "([^ \t\n]+)[ \n\t]*$" "\\1" _dir ${_dir})
+-    set_property(DIRECTORY ${_dir} PROPERTY TEST_INCLUDE_FILE ${CMAKE_BINARY_DIR}/${_dir}/BuildTests.cmake)
++    #set_property(DIRECTORY ${_dir} PROPERTY TEST_INCLUDE_FILE ${CMAKE_BINARY_DIR}/${_dir}/BuildTests.cmake)
+   endforeach(_dir ${_dirs})
+ endmacro(test_dep)
+ 

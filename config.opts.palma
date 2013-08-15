@@ -1,0 +1,10 @@
+CONFIGURE_FLAGS="
+  CC=gcc \
+  CXX=g++ \
+  F77=gfortran \
+  CXXFLAGS='-fno-strict-aliasing -DNDEBUG -g3 -ggdb -std=c++0x ' \
+  --enable-fieldvector-size-is-method \
+  --disable-documentation \
+  INKSCAPE=no \
+"
+CMAKE_FLAGS="-Wno-dev -DBLAS_LIBRARIES=/Applic.ZIV/GotoBLAS2/gcc/libgoto2.a"
