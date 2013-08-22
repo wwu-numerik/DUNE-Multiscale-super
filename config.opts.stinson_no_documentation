@@ -4,3 +4,5 @@ CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb
   --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
   --enable-dunedevel \
   --disable-documentation  INKSCAPE=no"
+CMAKE_FLAGS="-Wno-dev "
+MAKE_FLAGS="-j4 -l8"

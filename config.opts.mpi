@@ -5,3 +5,4 @@ CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc CXXFLAGS='-fno-strict-aliasing -g -std=c++0
 	--with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
 	--enable-dunedevel \
 	--disable-documentation  INKSCAPE=no"
+CMAKE_FLAGS="-Wno-dev "

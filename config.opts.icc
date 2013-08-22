@@ -7,3 +7,4 @@ CONFIGURE_FLAGS="
   --disable-documentation \
   INKSCAPE=no \
 "
+CMAKE_FLAGS="-Wno-dev "
