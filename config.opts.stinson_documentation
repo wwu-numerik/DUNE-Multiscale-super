@@ -1,9 +1,0 @@
-CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb ' \
-  --enable-fieldvector-size-is-method \
-  --with-boost=yes \
-  --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
-  --enable-dunedevel \
-  --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
-  --enable-documentation "
-CMAKE_FLAGS="-Wno-dev "
-MAKE_FLAGS="-j4 -l8"
