@@ -27,7 +27,7 @@
 	url = http://users.dune-project.org/repositories/projects/dune-subgrid.git
 [submodule "dune-spgrid"]
 	path = dune-spgrid
-	url = http://users.dune-project.org/repositories/projects/dune-spgrid.git
+	url = http://users.dune-project.org/repositories/projects/renemilk-dune-spgrid.git
 [submodule "local/bin"]
 	path = local/bin
 	url = http://users.dune-project.org/repositories/projects/dune-demos-bin.git
