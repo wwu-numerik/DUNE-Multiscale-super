@@ -5,6 +5,8 @@ CONFIGURE_FLAGS="
   CXXFLAGS='-fno-strict-aliasing -DNDEBUG -g3 -ggdb -std=c++0x ' \
   --enable-fieldvector-size-is-method \
   --disable-documentation \
+  --enable-parallel \
   INKSCAPE=no \
 "
-CMAKE_FLAGS="-Wno-dev -DBLAS_LIBRARIES=/Applic.ZIV/GotoBLAS2/gcc/libgoto2.a"
+CMAKE_FLAGS="-Wno-dev -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DBLAS_LIBRARIES=/Applic.ZIV/GotoBLAS2/gcc/libgoto2.a"
+MAKE_FLAGS="-j 8"
