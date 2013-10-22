@@ -1,10 +1,10 @@
-CONFIGURE_FLAGS="CXX=clang++ CC=clang F77=gfortran CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb -std=c++11 -fopenmp -O0' \
+CONFIGURE_FLAGS="CXX=clang++ CC=clang F77=gfortran CXXFLAGS='-DDEBUG -g3 -ggdb -std=c++11  -O0' \
   --enable-fieldvector-size-is-method \
   --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
   --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
   --enable-dunedevel \
   --enable-parallel \
   --disable-documentation  INKSCAPE=no"
-CMAKE_FLAGS=" -Wno-dev -DPETSC_DIR=/usr/lib/petsc -DPETSC_ARCH=linux-gnu-cxx-opt -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DCMAKE_BUILD_TYPE=DEBUG"
-MAKE_FLAGS="-j4 -l8"
+CMAKE_FLAGS=" -Wno-dev -DPETSC_DIR=/usr/lib/petsc -DPETSC_ARCH=linux-gnu-cxx-opt  -DCMAKE_BUILD_TYPE=DEBUG"
+MAKE_FLAGS="-j8 -l8"
 BUILDDIR=build-clang-debug

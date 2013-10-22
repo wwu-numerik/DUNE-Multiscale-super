@@ -1,4 +1,4 @@
-CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb -std=c++0x -O0' \
+CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS=' -DDEBUG -g3 -ggdb -std=c++0x -O0' \
   --enable-fieldvector-size-is-method \
   --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
   --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
@@ -6,5 +6,5 @@ CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb
   --enable-parallel \
   --disable-documentation  INKSCAPE=no"
 CMAKE_FLAGS="-Wno-dev -DPETSC_DIR=/usr/lib/petsc -DPETSC_ARCH=linux-gnu-cxx-opt -DCMAKE_CXX_COMPILER=/usr/bin/mpic++ -DCMAKE_C_COMPILER=/usr/bin/mpicc -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DCMAKE_BUILD_TYPE=DEBUG"
-MAKE_FLAGS="-j4 -l8"
+MAKE_FLAGS="-j8 -l8"
 BUILDDIR=build-gcc-debug
