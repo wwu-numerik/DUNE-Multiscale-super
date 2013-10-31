@@ -68,41 +68,189 @@ index ebaeb5c..56e350c 100644
      }
      if ( msfem_solution_ && fem_solution_) {
 diff --git dune/multiscale/msfem/localproblems/localproblemsolver.cc dune/multiscale/msfem/localproblems/localproblemsolver.cc
-index de29889..fbc046a 100644
+index 55afc66..fbc046a 100644
 --- dune/multiscale/msfem/localproblems/localproblemsolver.cc
 +++ dune/multiscale/msfem/localproblems/localproblemsolver.cc
-@@ -1147,6 +1147,7 @@ void MsFEMLocalProblemSolver::assemble_all(bool /*silent*/) {
-   const HostGridLeafIndexSet& coarseGridLeafIndexSet = coarseSpace.gridPart().grid().leafIndexSet();
-   for (const auto& coarseEntity : coarseSpace) {
-     const int coarse_index = coarseGridLeafIndexSet.index(coarseEntity);
-+    const int coarseId = coarseSpace.gridPart().grid().globalIdSet().id(coarseEntity);
- 
-     DSC_LOG_INFO << "-------------------------" << std::endl
-             << "Coarse index " << coarse_index << std::endl;
-@@ -1156,7 +1157,7 @@ void MsFEMLocalProblemSolver::assemble_all(bool /*silent*/) {
- 
+@@ -1158,7 +1158,6 @@ void MsFEMLocalProblemSolver::assemble_all(bool /*silent*/) {
      const SubDiscreteFunctionSpaceType subDiscreteFunctionSpace(subGridPart);
      Dune::Timer assembleTimer;
+     const std::string name_local_solution = (boost::format("Local Problem Solution %d") % coarseId).str();
 -
-+    const std::string name_local_solution = (boost::format("Local Problem Solution %d") % coarseId).str();
      bool uzawa = DSC_CONFIG_GET( "rigorous_msfem.uzawa_solver", false );
      bool clement = ( DSC_CONFIG_GET( "rigorous_msfem.oversampling_strategy", "Clement" ) == "Clement" );
      if ( (!uzawa) && (specifier_.getOversamplingStrategy() == 3) && clement ) {
+diff --git dune/multiscale/msfem/localproblems/localproblemsolver.hh dune/multiscale/msfem/localproblems/localproblemsolver.hh
+index 4d787be..feaebb1 100644
+--- dune/multiscale/msfem/localproblems/localproblemsolver.hh
++++ dune/multiscale/msfem/localproblems/localproblemsolver.hh
+@@ -94,6 +94,7 @@ private:
+   typedef typename HostDiscreteFunctionSpaceType::DomainType DomainType;
+ 
+   typedef typename HostGridType::Traits::LeafIndexSet HostGridLeafIndexSet;
++  typedef typename HostGridType::Traits::GlobalIdSet::IdType IdType;
+   typedef typename HostDiscreteFunctionSpaceType::IteratorType HostGridEntityIteratorType;
+   typedef typename HostGridEntityIteratorType::Entity HostEntityType;
+   typedef typename HostEntityType::EntityPointer HostEntityPointerType;
+diff --git dune/multiscale/msfem/localproblems/localsolutionmanager.hh dune/multiscale/msfem/localproblems/localsolutionmanager.hh
+index bce6fb9..5401883 100644
+--- dune/multiscale/msfem/localproblems/localsolutionmanager.hh
++++ dune/multiscale/msfem/localproblems/localsolutionmanager.hh
+@@ -22,6 +22,7 @@ private:
+   typedef typename SubGridListType::SubGridDiscreteFunction DiscreteFunctionType;
+   typedef MsFEMTraits::CoarseEntityType                    CoarseEntityType;
+   typedef MsFEMTraits::MacroMicroGridSpecifierType          MacroMicroGridSpecifierType;
++  typedef typename CommonTraits::GridType::Traits::GlobalIdSet::IdType IdType;
+ 
+ public:
+   typedef std::vector< std::unique_ptr< DiscreteFunctionType > > LocalSolutionVectorType;
+@@ -48,7 +49,7 @@ private:
+   const MacroMicroGridSpecifierType& gridSpecifier_;
+   SubGridPartType                    subGridPart_;
+   DiscreteFunctionSpaceType          localDiscreteFunctionSpace_;
+-  const int                          coarseId_;
++  const IdType                          coarseId_;
+   bool                               loaded_;
+   const int                          numLocalProblems_;
+   LocalSolutionVectorType            localSolutions_;
 diff --git dune/multiscale/msfem/localproblems/subgrid-list.cc dune/multiscale/msfem/localproblems/subgrid-list.cc
-index 94fa204..5646a32 100644
+index a4a8414..5646a32 100644
 --- dune/multiscale/msfem/localproblems/subgrid-list.cc
 +++ dune/multiscale/msfem/localproblems/subgrid-list.cc
-@@ -371,7 +371,7 @@ int SubGridList::getEnclosingMacroCellIndex(const HostEntityPointerType& hostEnt
+@@ -176,8 +176,6 @@ SubGridList::SubGridList(MacroMicroGridSpecifierType& specifier, bool silent /*=
  
- SubGridList::IdType SubGridList::getEnclosingMacroCellId(const HostEntityPointerType& hostEntityPointer) {
+   fine_id_to_subgrid_ids_.resize( hostGridPart_.grid().size(0) );
+ 
+-  subgrid_id_to_base_coarse_entity_.resize( specifier_.getNumOfCoarseEntities() );
+-
+   //! @todo temp!
+   for (const auto& hostEntity : DSC::viewRange(hostGridPart_.grid().leafView())) {
+     getEnclosingMacroCellId(hostEntity);
+@@ -251,8 +249,10 @@ const SubGridList::EntityPointerCollectionType& SubGridList::getNodeEntityMap()
+ 
+ // given the id of a subgrid, return the entity seed for the 'base coarse entity'
+ // (i.e. the coarse entity that the subgrid was constructed from by enrichment )
+-const SubGridList::CoarseGridEntitySeed SubGridList::get_coarse_entity_seed( int i ) const {
+-  return subgrid_id_to_base_coarse_entity_[ i ];
++const SubGridList::CoarseGridEntitySeed& SubGridList::get_coarse_entity_seed( int i ) const {
++  // the following returns the mapped element for index i if present,
++  // if not, an out-of-range exception is thrown
++  return subgrid_id_to_base_coarse_entity_.at(i);
+ }
+ 
+ // given the index of a (codim 0) host grid entity, return the indices of the subgrids that contain the entity
+@@ -369,10 +369,10 @@ int SubGridList::getEnclosingMacroCellIndex(const HostEntityPointerType& hostEnt
+ }
+ 
+ 
+-int SubGridList::getEnclosingMacroCellId(const HostEntityPointerType& hostEntityPointer) {
++SubGridList::IdType SubGridList::getEnclosingMacroCellId(const HostEntityPointerType& hostEntityPointer) {
    // first check, whether we looked for this host entity already
--  IdType hostEntityId = coarseSpace_.gridPart().grid().globalIdSet().id(*hostEntityPointer);
+-  int hostEntityIndex = hostGridLeafIndexSet_.index(*hostEntityPointer);
+-  auto itFound = fineToCoarseMapID_.find(hostEntityIndex);
 +  IdType hostEntityId = hostSpace_.gridPart().grid().globalIdSet().id(*hostEntityPointer);
-   auto itFound = fineToCoarseMapID_.find(hostEntityId);
++  auto itFound = fineToCoarseMapID_.find(hostEntityId);
    if (itFound!=fineToCoarseMapID_.end()) {
      // if so, return the index that was found last time
+     return itFound->second;
+@@ -387,8 +387,8 @@ int SubGridList::getEnclosingMacroCellId(const HostEntityPointerType& hostEntity
+     bool hostEnIsInMacroCell = refElement.checkInside(macroGeo.local(baryCenter));
+     if (hostEnIsInMacroCell) {
+       lastIterator  = macroCellIterator;
+-      int macroId = coarseSpace_.gridPart().grid().globalIdSet().id(*macroCellIterator);
+-      fineToCoarseMapID_[hostEntityIndex] = macroId;
++      IdType macroId = coarseSpace_.gridPart().grid().globalIdSet().id(*macroCellIterator);
++      fineToCoarseMapID_[hostEntityId] = macroId;
+       return macroId;
+     }
+   }
+@@ -400,8 +400,8 @@ int SubGridList::getEnclosingMacroCellId(const HostEntityPointerType& hostEntity
+     bool hostEnIsInMacroCell = refElement.checkInside(macroGeo.local(baryCenter));
+     if (hostEnIsInMacroCell) {
+       lastIterator = macroCellIterator;
+-      int macroId = coarseSpace_.gridPart().grid().globalIdSet().id(*macroCellIterator);
+-      fineToCoarseMapID_[hostEntityIndex] = macroId;
++      IdType macroId = coarseSpace_.gridPart().grid().globalIdSet().id(*macroCellIterator);
++      fineToCoarseMapID_[hostEntityId] = macroId;
+       return macroId;
+     }
+   }
+@@ -460,10 +460,10 @@ void SubGridList::identifySubGrids() {
+     // make sure we only create subgrids for interior coarse elements, not
+     // for overlap or ghost elements
+     assert(coarse_entity.partitionType()==Dune::InteriorEntity);
+-    const int coarse_index = coarseGridLeafIndexSet_.index(coarse_entity);
++    const auto coarse_index = coarseGridLeafIndexSet_.index(coarse_entity);
+     // make sure we did not create a subgrid for the current coarse entity so far
+     assert(subGridList_.find(coarse_index)==subGridList_.end());
+-    subgrid_id_to_base_coarse_entity_[coarse_index] = coarse_entity.seed();
++    subgrid_id_to_base_coarse_entity_.insert(std::make_pair(coarse_index, std::move(coarse_entity.seed())));
+     subGridList_[coarse_index] = make_shared<SubGridType>(hostGrid);
+     subGridList_[coarse_index]->createBegin();
+ 
+diff --git dune/multiscale/msfem/localproblems/subgrid-list.hh dune/multiscale/msfem/localproblems/subgrid-list.hh
+index 86076c8..43484da 100644
+--- dune/multiscale/msfem/localproblems/subgrid-list.hh
++++ dune/multiscale/msfem/localproblems/subgrid-list.hh
+@@ -57,6 +57,7 @@ public:
+ private:
+   typedef typename HostDiscreteFunctionSpaceType::GridType HostGridType;
+   typedef typename HostGridType::Traits::LeafIndexSet HostGridLeafIndexSet;
++  typedef typename HostGridLeafIndexSet::IndexType EntityIndexType;
+   typedef typename HostDiscreteFunctionSpaceType::IteratorType HostGridEntityIteratorType;
+   typedef typename HostGridEntityIteratorType::Entity HostEntityType;
+   typedef typename HostEntityType::EntityPointer HostEntityPointerType;
+@@ -73,6 +74,7 @@ private:
+   typedef typename FunctionSpaceType::DomainType DomainType;
+ 
+ public:
++  typedef typename HostGridType::Traits::GlobalIdSet::IdType IdType;
+   typedef std::vector< DomainType > CoarseNodeVectorType;
+ 
+ private:
+@@ -100,6 +102,7 @@ public:
+   //! type of subgrid discrete function
+   typedef Fem::AdaptiveDiscreteFunction< SubGridDiscreteFunctionSpace > SubGridDiscreteFunction;
+ 
++
+   SubGridList(MacroMicroGridSpecifierType& specifier, bool silent = true);
+   ~SubGridList();
+ private:
+@@ -141,7 +144,7 @@ public:
+ */
+   int getEnclosingMacroCellIndex(const HostEntityPointerType& hostEntityPointer);
+ 
+-  int getEnclosingMacroCellId(const HostEntityPointerType& hostEntityPointer);
++  IdType getEnclosingMacroCellId(const HostEntityPointerType& hostEntityPointer);
+ 
+   /** Get the mapping from node number to codim 0 host entity.
+   * @return Returns the map.
+@@ -150,7 +153,7 @@ public:
+   
+   // given the id of a subgrid, return the entity seed for the 'base coarse entity'
+   // (i.e. the coarse entity that the subgrid was constructed from by enrichment )
+-  const CoarseGridEntitySeed get_coarse_entity_seed( int i ) const;
++  const CoarseGridEntitySeed& get_coarse_entity_seed( int i ) const;
+ 
+ private:
+   typedef std::map<int, std::shared_ptr<SubGridType> > SubGridStorageType;
+@@ -184,13 +187,13 @@ private:
+   EntityPointerCollectionType entities_sharing_same_node_;
+   EnrichmentMatrixType enriched_;
+   std::vector<std::map<int, int> > fineToCoarseMap_;
+-  std::map<int, int> fineToCoarseMapID_;
++  std::map<IdType, IdType> fineToCoarseMapID_;
+   // given the id of a fine grid element, the vector returns the ids of all subgrids that share that element
+   std::vector < std::vector< int > > fine_id_to_subgrid_ids_;
+   
+   // given the id of a subgrid, return the entity seed for the 'base coarse entity'
+   // (i.e. the coarse entity that the subgrid was constructed from by enrichment )
+-  std::vector < CoarseGridEntitySeed > subgrid_id_to_base_coarse_entity_;
++  std::map< EntityIndexType, CoarseGridEntitySeed > subgrid_id_to_base_coarse_entity_;
+ };
+ 
+ } //namespace MsFEM {
 diff --git dune/multiscale/msfem/msfem_solver.cc dune/multiscale/msfem/msfem_solver.cc
-index 8d31616..b68315c 100644
+index 0bd67b3..b68315c 100644
 --- dune/multiscale/msfem/msfem_solver.cc
 +++ dune/multiscale/msfem/msfem_solver.cc
 @@ -156,19 +156,11 @@ void Elliptic_MsFEM_Solver::identify_fine_scale_part( MacroMicroGridSpecifier& s
@@ -113,11 +261,11 @@ index 8d31616..b68315c 100644
 +            const int global_index_node = gridPart.indexSet().index(*node);
  
 -            // count the number of different coarse-grid-entities that share the above node
--            std::unordered_set< SubGridListType::IdType > coarse_entities;
+-            std::unordered_set< int > coarse_entities;
              const int numEntitiesSharingNode = nodeToEntityMap[global_index_node].size();
 -            for (size_t j = 0; j < numEntitiesSharingNode; ++j) {
 -              // get the id of the macro element enclosing the current element
--              const auto innerId = subgrid_list.getEnclosingMacroCellId(nodeToEntityMap[global_index_node][j]);
+-              const int innerId = subgrid_list.getEnclosingMacroCellId(nodeToEntityMap[global_index_node][j]);
 -              // the following will only add the entity index if it is not yet present
 -              coarse_entities.insert(innerId);
 -            }
