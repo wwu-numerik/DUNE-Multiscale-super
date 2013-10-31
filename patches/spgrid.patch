@@ -1,7 +1,7 @@
-diff --git i/CMakeLists.txt w/CMakeLists.txt
+diff --git CMakeLists.txt CMakeLists.txt
 index 3417914..23ea630 100644
---- i/CMakeLists.txt
-+++ w/CMakeLists.txt
+--- CMakeLists.txt
++++ CMakeLists.txt
 @@ -13,7 +13,7 @@ add_subdirectory(dune)
  add_subdirectory(m4)
  
