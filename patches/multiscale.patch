@@ -1,0 +1,68 @@
+diff --git src/Makefile.am src/Makefile.am
+index 0b1f1fc..5b6b27c 100644
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -1,8 +1,8 @@
+ 
+ SUBDIRS =
+ 
+-#GRIDTYPE=ALBERTAGRID
+-GRIDTYPE=ALUGRID_CONFORM
++GRIDTYPE=ALBERTAGRID
++#GRIDTYPE=ALUGRID_CONFORM
+ GRIDDIM=2
+ PROBLEM_NAMES= Toy One Two Three Four Five Six Seven Eight Nine Ten
+ FEM_PROBLEM=Nine
+@@ -25,8 +25,8 @@ CPPFLAGS = $(ALL_PKG_CPPFLAGS) $(AM_CPPFLAGS) \
+ 	$(AMIRAMESH_CPPFLAGS) \
+ 	$(ALBERTA_CPPFLAGS) $(BOOST_CPPFLAGS) $(DUNE_CPPFLAGS) \
+ 	$(ALUGRID_CPPFLAGS)  \
+-	-DGRIDDIM=$(GRIDDIM) -DGRIDTYPE=$(GRIDTYPE) -DWORLDDIM=$(GRIDDIM)
+-	
++	-DGRIDDIM=$(GRIDDIM) -DGRIDTYPE=$(GRIDTYPE) -DWORLDDIM=$(GRIDDIM) -w
++
+ elliptic_hmm_CPPFLAGS=$(common_CPPFLAGS) -DPROBLEM_NAME=$(HMM_PROBLEM)
+ elliptic_msfem_CPPFLAGS = $(common_CPPFLAGS) -DPROBLEM_NAME=$(MSFEM_PROBLEM)
+ elliptic_rigorous_msfem_CPPFLAGS = $(common_CPPFLAGS) -DPROBLEM_NAME=$(MSFEM_RIGOROUS_PROBLEM)
+diff --git src/ms.param src/ms.param
+index fdff5d2..a29feff 100644
+--- src/ms.param
++++ src/ms.param
+@@ -35,10 +35,7 @@ rs_grid_level = 16
+ [global]
+ 
+ # directory to save the data output
+-#datadir = data/MsFEM/Model_Problem_9/Coarse_8_Fine_16_Layers_10
+-datadir = data/Rigorous_MsFEM_Clement/Model_Problem_9/Coarse_6_Fine_12_Layers_16
+-
+-
++datadir = data
+ 
+ # VTK output for the solutions of the local problems
+ local_solution_vtk_output = 1
+@@ -63,13 +60,13 @@ dir = logdata
+ [msfem]
+ 
+ # initial coarse grid level
+-coarse_grid_level = 4
++coarse_grid_level = 8
+ 
+ # initial fine grid level 
+-fine_grid_level = 6
++fine_grid_level = 12
+ 
+ # number of oversampling layers (layers of fine grid elements)
+-oversampling_layers = 0
++oversampling_layers = 8
+ 
+ # oversampling strategy 1 or 2.
+ oversampling_strategy = 1
+@@ -79,7 +76,7 @@ oversampling_strategy = 1
+ # See 'rigorous MsFEM for oversampling strategy 3 (a + b).
+ 
+ # use the MsFEM in Petrov-Galerkin formulation (unsymmetric)
+-petrov_galerkin = 0
++petrov_galerkin = 1
+ 
+ # compute the estimated error?
+ error_estimation = 0
