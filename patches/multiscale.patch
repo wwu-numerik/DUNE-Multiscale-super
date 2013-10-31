@@ -1,0 +1,130 @@
+diff --git CMakeLists.txt CMakeLists.txt
+index c53a618..ee03b18 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -105,14 +105,14 @@ If    ("${CMAKE_BUILD_TYPE}" MATCHES "^REL")
+   "-pipe" "-fomit-frame-pointer" "-flto" "-O4" "-fwhole-program" "-ftree-vectorize" "-fno-alias")
+ EndIf ("${CMAKE_BUILD_TYPE}" MATCHES "^REL")
+ 
+-add_definitions("-DSPGRID" "-DGRIDDIM=2")
++add_definitions("-DALBERTAGRID" "-DENABLE_ALBERTA" "-DALBERTA_DIM=2" "-DGRIDDIM=2")
+ ADD_LIBRARY(multiscale_common STATIC ${COMMON_SOURCES})
+ ADD_LIBRARY(multiscale_problem STATIC ${PROBLEM_SOURCES})
+ ADD_LIBRARY(multiscale_lodm STATIC ${LODM_SOURCES})
+ ADD_LIBRARY(multiscale_msfem STATIC ${MSFEM_SOURCES})
+ ADD_LIBRARY(multiscale_hmm STATIC ${HMM_SOURCES})
+ 
+-set( COMMON_LIBS multiscale_problem multiscale_common ${DUNE_DEFAULT_LIBS})
++set( COMMON_LIBS multiscale_problem multiscale_common ${DUNE_DEFAULT_LIBS} blas dunestuff boost_timer )
+ 
+ set(ALL_MULTISCALE_LIBS multiscale_lodm multiscale_msfem multiscale_hmm ${COMMON_LIBS} )
+ 
+@@ -134,6 +134,13 @@ TARGET_LINK_LIBRARIES(elliptic_lodm multiscale_lodm ${COMMON_LIBS} )
+ ADD_EXECUTABLE(msfem-1d src/msfem-1d.cc ${COMMON_HEADER} )
+ TARGET_LINK_LIBRARIES(msfem-1d ${COMMON_LIBS} )
+ 
++add_dune_alberta_flags(GRIDDIM 2 OBJECT multiscale_common)
++add_dune_alberta_flags(GRIDDIM 2 OBJECT multiscale_problem)
++add_dune_alberta_flags(GRIDDIM 2 OBJECT multiscale_lodm)
++add_dune_alberta_flags(GRIDDIM 2 OBJECT multiscale_msfem)
++add_dune_alberta_flags(GRIDDIM 2 OBJECT multiscale_hmm)
++add_dune_alberta_flags(GRIDDIM 2 elliptic_msfem)
++
+ HEADERCHECK( ${header} ${dune} )
+ DEPENDENCYCHECK( ${header} ${dune} )
+ 
+diff --git dune/multiscale/common/error_calc.cc dune/multiscale/common/error_calc.cc
+index ebaeb5c..56e350c 100644
+--- dune/multiscale/common/error_calc.cc
++++ dune/multiscale/common/error_calc.cc
+@@ -41,12 +41,12 @@ void Dune::Multiscale::ErrorCalculator::print(std::ostream &out)
+           out << "|| u_msfem - u_exact ||_L2 =  " << msfem_error << std::endl;
+           csv["msfem_exact_L2"] = msfem_error;
+ 
+-/*! -- Fix me ---
++
+           CommonTraits::RangeType h1_msfem_error = h1norm.distance(u_disc, *msfem_solution_);
+           out << "|| u_msfem - u_exact ||_H1 =  " << h1_msfem_error << std::endl << std::endl;
+ 
+           csv["msfem_exact_H1"] = h1_msfem_error;
+-*/
++
+       }
+ 
+       if (fem_solution_)
+@@ -55,12 +55,12 @@ void Dune::Multiscale::ErrorCalculator::print(std::ostream &out)
+         out << "|| u_fem - u_exact ||_L2 =  " << fem_error << std::endl;
+         csv["fem_exact_L2"] = fem_error;
+ 
+-/*! -- Fix me ---
++
+         CommonTraits::RangeType h1_fem_error = h1norm.distance(u_disc, *fem_solution_);
+         out << "|| u_fem - u_exact ||_H1 =  " << h1_fem_error << std::endl << std::endl;
+ 
+         csv["fem_exact_H1"] = h1_fem_error;
+-*/
++
+       }
+     }
+     if ( msfem_solution_ && fem_solution_) {
+diff --git dune/multiscale/msfem/localproblems/localproblemsolver.cc dune/multiscale/msfem/localproblems/localproblemsolver.cc
+index de29889..fbc046a 100644
+--- dune/multiscale/msfem/localproblems/localproblemsolver.cc
++++ dune/multiscale/msfem/localproblems/localproblemsolver.cc
+@@ -1147,6 +1147,7 @@ void MsFEMLocalProblemSolver::assemble_all(bool /*silent*/) {
+   const HostGridLeafIndexSet& coarseGridLeafIndexSet = coarseSpace.gridPart().grid().leafIndexSet();
+   for (const auto& coarseEntity : coarseSpace) {
+     const int coarse_index = coarseGridLeafIndexSet.index(coarseEntity);
++    const int coarseId = coarseSpace.gridPart().grid().globalIdSet().id(coarseEntity);
+ 
+     DSC_LOG_INFO << "-------------------------" << std::endl
+             << "Coarse index " << coarse_index << std::endl;
+@@ -1156,7 +1157,7 @@ void MsFEMLocalProblemSolver::assemble_all(bool /*silent*/) {
+ 
+     const SubDiscreteFunctionSpaceType subDiscreteFunctionSpace(subGridPart);
+     Dune::Timer assembleTimer;
+-
++    const std::string name_local_solution = (boost::format("Local Problem Solution %d") % coarseId).str();
+     bool uzawa = DSC_CONFIG_GET( "rigorous_msfem.uzawa_solver", false );
+     bool clement = ( DSC_CONFIG_GET( "rigorous_msfem.oversampling_strategy", "Clement" ) == "Clement" );
+     if ( (!uzawa) && (specifier_.getOversamplingStrategy() == 3) && clement ) {
+diff --git dune/multiscale/msfem/localproblems/subgrid-list.cc dune/multiscale/msfem/localproblems/subgrid-list.cc
+index 94fa204..5646a32 100644
+--- dune/multiscale/msfem/localproblems/subgrid-list.cc
++++ dune/multiscale/msfem/localproblems/subgrid-list.cc
+@@ -371,7 +371,7 @@ int SubGridList::getEnclosingMacroCellIndex(const HostEntityPointerType& hostEnt
+ 
+ SubGridList::IdType SubGridList::getEnclosingMacroCellId(const HostEntityPointerType& hostEntityPointer) {
+   // first check, whether we looked for this host entity already
+-  IdType hostEntityId = coarseSpace_.gridPart().grid().globalIdSet().id(*hostEntityPointer);
++  IdType hostEntityId = hostSpace_.gridPart().grid().globalIdSet().id(*hostEntityPointer);
+   auto itFound = fineToCoarseMapID_.find(hostEntityId);
+   if (itFound!=fineToCoarseMapID_.end()) {
+     // if so, return the index that was found last time
+diff --git dune/multiscale/msfem/msfem_solver.cc dune/multiscale/msfem/msfem_solver.cc
+index 8d31616..b68315c 100644
+--- dune/multiscale/msfem/msfem_solver.cc
++++ dune/multiscale/msfem/msfem_solver.cc
+@@ -156,19 +156,11 @@ void Elliptic_MsFEM_Solver::identify_fine_scale_part( MacroMicroGridSpecifier& s
+           for (int i = 0; i < number_of_nodes_entity; ++i)
+           {
+             const typename HostEntity::Codim< HostGrid::dimension >::EntityPointer node = fine_host_entity.subEntity< HostGrid::dimension >(i);
+-            const int global_index_node = gridPart.grid().leafIndexSet().index(*node);
++            const int global_index_node = gridPart.indexSet().index(*node);
+ 
+-            // count the number of different coarse-grid-entities that share the above node
+-            std::unordered_set< SubGridListType::IdType > coarse_entities;
+             const int numEntitiesSharingNode = nodeToEntityMap[global_index_node].size();
+-            for (size_t j = 0; j < numEntitiesSharingNode; ++j) {
+-              // get the id of the macro element enclosing the current element
+-              const auto innerId = subgrid_list.getEnclosingMacroCellId(nodeToEntityMap[global_index_node][j]);
+-              // the following will only add the entity index if it is not yet present
+-              coarse_entities.insert(innerId);
+-            }
+-            host_loc_value[i] += ( sub_loc_value[i] / coarse_entities.size() );
+-
++            // devide the value by the number of elements that share the node
++            host_loc_value[i] += ( sub_loc_value[i] / numEntitiesSharingNode );
+           }
+         }
+       }

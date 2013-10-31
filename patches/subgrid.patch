@@ -1,0 +1,55 @@
+diff --git dune/subgrid/subgrid/subgridentity.hh dune/subgrid/subgrid/subgridentity.hh
+index 4b46582..da02469 100644
+--- dune/subgrid/subgrid/subgridentity.hh
++++ dune/subgrid/subgrid/subgridentity.hh
+@@ -249,7 +249,7 @@ class SubGridEntity<0, dim, GridImp> :
+         {
+             if (!isLeaf()) return ileafend();
+             return SubGridLeafIntersectionIterator<GridImp>(subGrid_,
+-                hostEntity_->ilevelbegin(), hostEntity_->ilevelend());
++                hostEntity_->ileafbegin(), hostEntity_->ileafend());
+         }
+ 
+ 
+@@ -257,7 +257,7 @@ class SubGridEntity<0, dim, GridImp> :
+         SubGridLeafIntersectionIterator<GridImp> ileafend () const
+         {
+             return SubGridLeafIntersectionIterator<GridImp>(subGrid_,
+-                hostEntity_->ilevelend(), hostEntity_->ilevelend());
++                hostEntity_->ileafend(), hostEntity_->ileafend());
+         }
+ 
+ 
+diff --git dune/subgrid/subgrid/subgridintersectioniterator.hh dune/subgrid/subgrid/subgridintersectioniterator.hh
+index 349e2b1..b6154dc 100644
+--- dune/subgrid/subgrid/subgridintersectioniterator.hh
++++ dune/subgrid/subgrid/subgridintersectioniterator.hh
+@@ -108,7 +108,7 @@ public:
+                     HostEntityPointer father = fatherIt->outside();
+ 
+                     // flip the intersection to get the right IndexInOutside
+-                    HostLevelIntersectionIterator i = father->ilevelbegin();
++                    auto i = father->ileafbegin();
+                     while (i->boundary() || (i->neighbor() && i->outside() != fatherIt->inside()))
+                         ++i;
+ 
+@@ -151,7 +151,7 @@ public:
+                     HostEntityPointer father = fatherIt->outside();
+ 
+                     // flip the intersection to get the right IndexInOutside
+-                    HostLevelIntersectionIterator i = father->ilevelbegin();
++                    auto i = father->ileafbegin();
+                     while (i->boundary() || (i->neighbor() && i->outside() != fatherIt->inside()))
+                         ++i;
+ 
+@@ -630,8 +630,8 @@ public:
+         HostEntityPointer fatherElement  = currentFace_->inside()->father();
+ 
+         // loop over all intersections of the father element and look for the father intersection
+-        HostLevelIntersectionIterator fatherFaceIt = fatherElement->ilevelbegin();
+-        HostLevelIntersectionIterator fatherFaceEnd = fatherElement->ilevelend();
++        auto fatherFaceIt = fatherElement->ileafbegin();
++        auto fatherFaceEnd = fatherElement->ileafend();
+ 
+         for (; fatherFaceIt != fatherFaceEnd; ++fatherFaceIt)
+             if (SubGridFaceIterator<GridImp,This,HostLevelIntersection>

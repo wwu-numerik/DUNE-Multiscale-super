@@ -1,0 +1,51 @@
+diff --git dune/stuff/function/interface.hh dune/stuff/function/interface.hh
+index 90e3b7c..a13be6f 100644
+--- dune/stuff/function/interface.hh
++++ dune/stuff/function/interface.hh
+@@ -45,6 +45,7 @@ public:
+   static const unsigned int                                               dimRangeRows = rangeDimRows;
+   static const unsigned int                                               dimRangeCols = rangeDimCols;
+   typedef Dune::FieldMatrix< RangeFieldType, dimRangeRows, dimRangeCols > RangeType;
++  typedef Dune::FieldMatrix< RangeFieldType, dimRangeRows, dimDomain > JacobianRangeType;
+ 
+   virtual ~FunctionInterface() {}
+ 
+@@ -76,6 +77,10 @@ public:
+   virtual void evaluate(const DomainType& /*x*/, RangeType& /*ret*/) const = 0;
+   /* @} */
+ 
++  virtual void jacobian(const DomainType&, JacobianRangeType&) const {
++    DUNE_THROW(NotImplemented, "Jacobian needs to be implemented!");  
++  }
++
+   virtual RangeType evaluate(const DomainType& x) const
+   {
+     RangeType ret;
+@@ -124,6 +129,7 @@ public:
+   static const unsigned int                             dimRangeRows = dimRange;
+   static const unsigned int                             dimRangeCols = 1;
+   typedef Dune::FieldVector< RangeFieldType, dimRange > RangeType;
++  typedef Dune::FieldMatrix< RangeFieldType, dimRange, dimDomain > JacobianRangeType;
+ 
+   virtual ~FunctionInterface() {}
+ 
+@@ -150,6 +156,11 @@ public:
+   virtual void evaluate(const DomainType& /*x*/, RangeType& /*ret*/) const = 0;
+   /* @} */
+ 
++  virtual void jacobian(const DomainType&, JacobianRangeType&) const {
++    DUNE_THROW(NotImplemented, "Jacobian needs to be implemented!");
++  }
++
++
+   virtual RangeType evaluate(const DomainType& x) const
+   {
+     RangeType ret;
+diff --git examples/CMakeLists.txt examples/CMakeLists.txt
+index a0dccc8..8b13789 100644
+--- examples/CMakeLists.txt
++++ examples/CMakeLists.txt
+@@ -1,2 +1 @@
+-add_subdirectory(grid)
+-add_subdirectory( la )
++
