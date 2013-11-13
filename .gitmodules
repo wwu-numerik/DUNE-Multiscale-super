@@ -6,16 +6,16 @@
 	url = http://users.dune-project.org/repositories/projects/dune-fem-unofficial.git
 [submodule "dune-grid"]
 	path = dune-grid
-	url = http://git.dune-project.org/repositories/dune-grid
+	url = https://github.com/renemilk/dune-grid.git
 [submodule "dune-istl"]
 	path = dune-istl
-	url = http://git.dune-project.org/repositories/dune-istl
+	url = https://github.com/renemilk/dune-istl.git
 [submodule "dune-localfunctions"]
 	path = dune-localfunctions
 	url = http://git.dune-project.org/repositories/dune-localfunctions
 [submodule "dune-geometry"]
 	path = dune-geometry
-	url = http://git.dune-project.org/repositories/dune-geometry
+	url = https://github.com/renemilk/dune-geometry.git
 [submodule "dune-stuff"]
 	path = dune-stuff
 	url = http://users.dune-project.org/repositories/projects/dune-stuff.git
