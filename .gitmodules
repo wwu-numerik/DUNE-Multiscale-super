@@ -31,3 +31,6 @@
 [submodule "local/bin"]
 	path = local/bin
 	url = http://users.dune-project.org/repositories/projects/dune-demos-bin.git
+[submodule "fem-fv"]
+	path = fem-fv
+	url = http://dune-project.uni-muenster.de/repos/projects/smp-fem.git
