@@ -1,4 +1,4 @@
-CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS=' -DDEBUG -g3 -ggdb -std=c++0x -O0' \
+CONFIGURE_FLAGS="CXX=g++ CC=gcc CXXFLAGS=' -DDEBUG -g3 -ggdb -std=c++0x -O0 -fopenmp' \
   --enable-fieldvector-size-is-method \
   --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
   --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
