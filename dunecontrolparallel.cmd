@@ -12,4 +12,4 @@ export LD_LIBRARY_PATH=/Applic.PALMA/compiler/gcc/4.7.2/lib64:$LD_LIBRARY_PATH
 # source BOOST_PATH.sh
 
 # this should build dune-common dune-geometry dune-grid dune-istl dune-localfunctions dune-fem dune-subgrid dune-stuff dune-spgrid dune-multiscale
-./dune-common/bin/dunecontrol --use-cmake --opts=config.opts.palma --only=dune-fem all
+./dune-common/bin/dunecontrol --use-cmake --opts=config.opts.palma all
