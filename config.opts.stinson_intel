@@ -1,8 +1,8 @@
-CONFIGURE_FLAGS="CXX=/opt/intel/composer_xe_2013_sp1.1.106/bin/intel64/icpc CC=/opt/intel/composer_xe_2013_sp1.1.106/bin/intel64/icc CXXFLAGS='-DDEBUG -g3 -ggdb -std=c++11 -gcc-name=/usr/bin/gcc-4.7 -gxx-name=/usr/bin/g++-4.7  -O0 -fopenmp' \
+CONFIGURE_FLAGS="CXX=icpc CC=icc F77=ifort CXXFLAGS='-DDEBUG -g3 -ggdb -std=c++11 -gcc-name=/usr/bin/gcc-4.7 -gxx-name=/usr/bin/g++-4.7  -O0 -fopenmp' \
   --enable-fieldvector-size-is-method \
   --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
   --enable-parallel \
   --disable-documentation  INKSCAPE=no"
-CMAKE_FLAGS="-Wno-dev -DCMAKE_CXX_COMPILER=/opt/intel/composer_xe_2013_sp1.1.106/bin/intel64/icpc -DCMAKE_C_COMPILER=/opt/intel/composer_xe_2013_sp1.1.106/bin/intel64/icc -DCMAKE_BUILD_TYPE=DEBUG"
-MAKE_FLAGS="-j3 -l3"
+CMAKE_FLAGS=" -DCMAKE_TOOLCHAIN_FILE=/home/r_milk01/projekte/uni/dune/cmake_multiscale/stinson.intel.toolchain -DCMAKE_BUILD_TYPE=DEBUG"
+MAKE_FLAGS="-j2 -l2"
 BUILDDIR=build-intel-debug

@@ -1,0 +1,6 @@
+set(CMAKE_CXX_COMPILER /opt/intel/composer_xe_2013_sp1.1.106/bin/intel64/icpc )
+set(CMAKE_C_COMPILER /opt/intel/composer_xe_2013_sp1.1.106/bin/intel64/icc )
+set(TBBROOT /opt/intel/tbb/)
+set(TBB_DEBUG_LIBRARY /opt/intel/tbb/lib/intel64/gcc4.4/libtbb_debug.so CACHE STRING "")
+set(TBB_LIBRARY /opt/intel/tbb/lib/intel64/gcc4.4/libtbb.so CACHE STRING "")
+set(TBB_INCLUDE_DIR /opt/intel/tbb/include CACHE STRING "")
