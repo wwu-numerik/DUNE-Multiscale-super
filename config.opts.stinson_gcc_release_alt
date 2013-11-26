@@ -1,0 +1,10 @@
+CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc CXXFLAGS='-DNDEBUG -std=c++11 -O0 -fopenmp ' LDFLAGS=-liomp5 \
+  --enable-fieldvector-size-is-method \
+  --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
+  --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
+  --enable-dunedevel \
+  --enable-parallel \
+  --disable-documentation  INKSCAPE=no"
+CMAKE_FLAGS="-Wno-dev -DPETSC_DIR=/usr/lib/petsc -DPETSC_ARCH=linux-gnu-cxx-opt -DCMAKE_CXX_COMPILER=/usr/bin/mpic++ -DCMAKE_C_COMPILER=/usr/bin/mpicc -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DCMAKE_BUILD_TYPE=RELEASE"
+MAKE_FLAGS="-j4 -l8"
+BUILDDIR=build-gcc-intel

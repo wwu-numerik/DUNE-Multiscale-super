@@ -1,0 +1,9 @@
+set(TBBROOT /opt/intel/tbb/)
+set(TBB_DEBUG_LIBRARY /opt/intel/tbb/lib/intel64/gcc4.4/libtbb_debug.so CACHE STRING "")
+set(TBB_LIBRARY /opt/intel/tbb/lib/intel64/gcc4.4/libtbb.so CACHE STRING "")
+set(TBB_INCLUDE_DIR /opt/intel/tbb/include CACHE STRING "")
+
+set(ENABLE_MPI 1 )
+set(CMAKE_DISABLE_FIND_PACKAGE_MPI 0 )
+set(CMAKE_EXE_LINKER_FLAGS -L/opt/intel/composer_xe_2013_sp1.0.080/compiler/lib/intel64/ -lblas CACHE STRING "")
+set(CMAKE_MODULE_LINKER_FLAGS -L/opt/intel/composer_xe_2013_sp1.0.080/compiler/lib/intel64/ -lblas CACHE STRING "")

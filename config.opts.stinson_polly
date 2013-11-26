@@ -1,9 +1,9 @@
-CONFIGURE_FLAGS="CXX=pollycc CC=clang F77=gfortran CXXFLAGS='-DNDEBUG -std=c++11  -O3 -mllvm -polly' \
+CONFIGURE_FLAGS="CXX=pollycc CC=pollycc F77=gfortran CXXFLAGS='-DNDEBUG -std=c++11  -O3 -mllvm -polly' \
   --enable-fieldvector-size-is-method \
   --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
   --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
   --enable-dunedevel \
   --disable-documentation  INKSCAPE=no"
-CMAKE_FLAGS=" -Wno-dev -DPETSC_DIR=/usr/lib/petsc -DPETSC_ARCH=linux-gnu-cxx-opt  -DCMAKE_BUILD_TYPE=RELEASE"
+CMAKE_FLAGS=" -Wno-dev -DCMAKE_BUILD_TYPE=RELEASE"
 MAKE_FLAGS="-j8 -l8"
 BUILDDIR=build-polly
