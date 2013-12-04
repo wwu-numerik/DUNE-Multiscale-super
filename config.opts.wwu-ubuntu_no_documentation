@@ -1,4 +1,5 @@
 CONFIGURE_FLAGS="CXX=/usr/lib/gcc-snapshot/bin/g++ CC=/usr/lib/gcc-snapshot/bin/gcc CXXFLAGS='-O3 -g3 -ggdb -std=c++0x -fopenmp -DNDEBUG' F77=gfortran \
+	LDFLAGS='-liomp5' \
 	--enable-fieldvector-size-is-method \
 	--enable-parallel \
   --with-boost=yes \
@@ -12,6 +13,6 @@ CONFIGURE_FLAGS="CXX=/usr/lib/gcc-snapshot/bin/g++ CC=/usr/lib/gcc-snapshot/bin/
   --enable-embedded-python \
 	--disable-documentation INKSCAPE=no"
 
-CMAKE_FLAGS="-Wno-dev -DCMAKE_CXX_COMPILER=/usr/lib/gcc-snapshot/bin/g++ -DCMAKE_C_COMPILER=/usr/lib/gcc-snapshot/bin/gcc -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DCMAKE_BUILD_TYPE=RelWithDebInfo"
-MAKE_FLAGS="-j8 -l8"
+CMAKE_FLAGS="-Wno-dev -DCMAKE_CXX_COMPILER=/usr/lib/gcc-snapshot/bin/g++ -DCMAKE_C_COMPILER=/usr/lib/gcc-snapshot/bin/gcc -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DTBBROOT=/Applic.ZIV/Intel/Version2013/composer_xe_2013.1.117/tbb -DTBB_ROOT=/Applic.ZIV/Intel/Version2013/composer_xe_2013.1.117/tbb -DTBB_INCLUDE_DIR=/Applic.ZIV/Intel/Version2013/composer_xe_2013.1.117/tbb/include"
+MAKE_FLAGS="-j12 -l12"
 BUILDDIR=build-gcc-release
