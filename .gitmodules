@@ -22,9 +22,6 @@
 [submodule "dune-multiscale"]
 	path = dune-multiscale
 	url = http://users.dune-project.org/repositories/projects/dune-multiscale.git
-[submodule "dune-subgrid"]
-	path = dune-subgrid
-	url = http://users.dune-project.org/repositories/projects/dune-subgrid.git
 [submodule "dune-spgrid"]
 	path = dune-spgrid
 	url = http://users.dune-project.org/repositories/projects/renemilk-dune-spgrid.git
