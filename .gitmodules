@@ -31,3 +31,9 @@
 [submodule "local/bin"]
 	path = local/bin
 	url = http://users.dune-project.org/repositories/projects/dune-demos-bin.git
+[submodule "dune-fem-howto"]
+	path = dune-fem-howto
+	url = https://svenkaulmann@www.ians.uni-stuttgart.de:8443/agh/gitblit/git/software/cpp/dune-fem-howto.git
+[submodule "dune-rb"]
+	path = dune-rb
+	url = http://users.dune-project.org/repositories/projects/dune-rb-dev.git
