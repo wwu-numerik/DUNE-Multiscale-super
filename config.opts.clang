@@ -8,7 +8,7 @@ MPICC=mpicc \
 MAKE_FLAGS="-j 2"
 
 CMAKE_FLAGS="-Wno-dev -DCMAKE_PREFIX_PATH=/Users/svenkaulmann/dune_modules/ALUGrid-1.52_libstdc++ \
- -DCMAKE_CXX_FLAGS=' -std=c++11 -stdlib=libc++ -DBOOST_NO_CXX11_NUMERIC_LIMITS -Wno-undef -Wno-unused-parameter -Wno-unused-variable -O0 -g' -DCMAKE_BUILD_TYPE='DEBUG'"
+ -DCMAKE_CXX_FLAGS=' -std=c++11 -stdlib=libc++ -DBOOST_NO_CXX11_NUMERIC_LIMITS' -DCMAKE_BUILD_TYPE='DEBUG' -DALUGRID_ROOT='/Users/svenkaulmann/dune_modules/ALUGrid-1.52_clang'"
  # -DLDFLAGS='-stdlib=libc++ -L/opt/local/include -lhdf5' \
  # -DCMAKE_CXX_LINK_FLAGS='-L/opt/local/include -lhdf5' \
  # -DCMAKE_MODULE_LINKER_FLAGS='-L/opt/local/include -lhdf5' \
