@@ -1,7 +1,6 @@
 CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc CXXFLAGS='-DNDEBUG -std=c++11 -O4 -w' \
   --enable-fieldvector-size-is-method \
   --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
-  --with-alberta=/opt/dune/modules/alberta/alberta-3.0 \
   --enable-dunedevel \
   --enable-parallel \
   --disable-documentation  INKSCAPE=no"
