@@ -28,3 +28,12 @@
 [submodule "local/bin"]
 	path = local/bin
 	url = http://users.dune-project.org/repositories/projects/dune-demos-bin.git
+[submodule "dune-pdelab-howto"]
+	path = dune-pdelab-howto
+	url = http://git.dune-project.org/repositories/dune-pdelab-howto
+[submodule "dune-pdelab"]
+	path = dune-pdelab
+	url = http://git.dune-project.org/repositories/dune-pdelab
+[submodule "dune-typetree"]
+	path = dune-typetree
+	url = http://git.dune-project.org/repositories/dune-typetree
