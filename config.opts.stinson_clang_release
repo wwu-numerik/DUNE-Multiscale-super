@@ -1,6 +1,5 @@
 CONFIGURE_FLAGS="CXX=clang++ CC=clang F77=gfortran CXXFLAGS='-DNDEBUG -std=c++11 -O3 -w' \
   --enable-fieldvector-size-is-method \
-  --with-alugrid=/opt/dune/modules/alugrid/alugrid-1.52 \
   --enable-dunedevel \
   --enable-parallel \
   --disable-documentation  INKSCAPE=no"
