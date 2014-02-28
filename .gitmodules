@@ -30,7 +30,7 @@
 	url = http://users.dune-project.org/repositories/projects/dune-demos-bin.git
 [submodule "dune-pdelab-howto"]
 	path = dune-pdelab-howto
-	url = http://git.dune-project.org/repositories/dune-pdelab-howto
+	url = https://github.com/renemilk/dune-pdelab-howto.git
 [submodule "dune-pdelab"]
 	path = dune-pdelab
 	url = https://users.dune-project.org/repositories/projects/dune-pdelab-unofficial.git
