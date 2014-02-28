@@ -33,7 +33,7 @@
 	url = http://git.dune-project.org/repositories/dune-pdelab-howto
 [submodule "dune-pdelab"]
 	path = dune-pdelab
-	url = http://git.dune-project.org/repositories/dune-pdelab
+	url = https://users.dune-project.org/repositories/projects/dune-pdelab-unofficial.git
 [submodule "dune-typetree"]
 	path = dune-typetree
 	url = http://git.dune-project.org/repositories/dune-typetree
