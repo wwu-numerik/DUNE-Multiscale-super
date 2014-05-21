@@ -1,9 +1,8 @@
 CONFIGURE_FLAGS="
-  CC=gcc-4.6 \
-  CXX=g++-4.6 \
-  F77=gfortran-4.6 \
+  CC=gcc \
+  CXX=g++ \
+  F77=gfortran \
   CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb -std=c++0x -Wextra -Wall' \
-  --enable-fieldvector-size-is-method \
   --disable-documentation \
   INKSCAPE=no \
 "
