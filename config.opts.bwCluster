@@ -1,0 +1,12 @@
+CONFIGURE_FLAGS="
+  CC=mpicc \
+  CXX=mpic++ \
+  F77=gfortran \
+  CXXFLAGS='-fno-strict-aliasing -DNDEBUG -O3 -std=c++0x ' \
+  --enable-fieldvector-size-is-method \
+  --disable-documentation \
+  --enable-parallel \
+  INKSCAPE=no \
+"
+CMAKE_FLAGS="-Wno-dev -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DCMAKE_BUILD_TYPE=RELEASE -DBOOST_ROOT=../local -DBoost_NO_SYSTEM_PATHS=TRUE -DBoost_NO_BOOST_CMAKE=TRUE"
+MAKE_FLAGS="-j 8"
