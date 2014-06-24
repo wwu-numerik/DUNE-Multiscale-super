@@ -17,3 +17,8 @@ stable = True
 file = config.opts.clang
 cc = clang
 stable = True
+
+[GDT-integration_clang_3.1]
+file = config.opts.clang
+cc = clang
+branch = dune-gdt-integration
