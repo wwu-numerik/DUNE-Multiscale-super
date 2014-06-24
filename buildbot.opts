@@ -1,22 +1,14 @@
 [gcc_4.8] 
 file = config.opts.gcc-4.8 
 cc = /usr/lib/gcc-snapshot/bin/gcc
-stable = True
-
-[gcc_4.8_NO-MPI]
-file = config.opts.gcc-4.8_no-mpi
-cc = /usr/lib/gcc-snapshot/bin/gcc
-stable = True
 
 [icc_14]
 file = config.opts.intel
 cc = icc
-stable = True
 
 [clang_3.1]
 file = config.opts.clang
 cc = clang
-stable = True
 
 [GDT-integration_clang_3.1]
 file = config.opts.clang
