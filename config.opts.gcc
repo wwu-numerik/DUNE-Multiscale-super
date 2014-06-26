@@ -3,6 +3,7 @@ CONFIGURE_FLAGS="
   CXX=g++-4.6 \
   F77=gfortran-4.6 \
   CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -ggdb -std=c++0x -Wextra -Wall' \
+  --enable-parallel \
   --disable-documentation \
   INKSCAPE=no \
 "
