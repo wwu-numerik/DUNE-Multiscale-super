@@ -37,3 +37,6 @@
 [submodule "dune-typetree"]
 	path = dune-typetree
 	url = http://git.dune-project.org/repositories/dune-typetree
+[submodule "dune-gdt"]
+	path = dune-gdt
+	url = http://users.dune-project.org/repositories/projects/dune-gdt.git
