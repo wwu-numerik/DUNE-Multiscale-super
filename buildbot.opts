@@ -15,7 +15,7 @@ file = config.opts.clang
 cc = clang
 branch = dune-gdt-integration
 
-[w/o_dune-fem_clang_3.1]
+[w-o_dune-fem_clang_3.1]
 file = config.opts.clang
 cc = clang
 branch = no_dune-fem
