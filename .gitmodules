@@ -1,21 +1,21 @@
 [submodule "dune-common"]
 	path = dune-common
-	url = http://git.dune-project.org/repositories/dune-common
+	url = http://git.dune-project.org/repositories/exadune/common
 [submodule "dune-fem"]
 	path = dune-fem
 	url = http://users.dune-project.org/repositories/projects/dune-fem-unofficial.git
 [submodule "dune-grid"]
 	path = dune-grid
-	url = http://git.dune-project.org/repositories/dune-grid
+	url = http://git.dune-project.org/repositories/exadune/grid
 [submodule "dune-istl"]
 	path = dune-istl
-	url = http://git.dune-project.org/repositories/dune-istl
+	url = http://git.dune-project.org/repositories/exadune/istl
 [submodule "dune-localfunctions"]
 	path = dune-localfunctions
-	url = http://git.dune-project.org/repositories/dune-localfunctions
+	url = http://git.dune-project.org/repositories/exadune/localfunctions
 [submodule "dune-geometry"]
 	path = dune-geometry
-	url = http://git.dune-project.org/repositories/dune-geometry
+	url = http://git.dune-project.org/repositories/exadune/geometry
 [submodule "dune-stuff"]
 	path = dune-stuff
 	url = http://users.dune-project.org/repositories/projects/dune-stuff.git
@@ -33,7 +33,7 @@
 	url = https://users.dune-project.org/repositories/projects/dune-pdelab-unofficial.git
 [submodule "dune-typetree"]
 	path = dune-typetree
-	url = http://git.dune-project.org/repositories/dune-typetree
+	url = http://git.dune-project.org/repositories/exadune/typetree
 [submodule "dune-gdt"]
 	path = dune-gdt
 	url = http://users.dune-project.org/repositories/projects/dune-gdt.git
