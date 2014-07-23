@@ -21,3 +21,5 @@ configure
 Makefile
 .deps
 *.ALU?dGrid
+sumatra
+massif
