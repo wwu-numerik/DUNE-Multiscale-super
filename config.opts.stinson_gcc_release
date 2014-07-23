@@ -1,8 +1,6 @@
-CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc CXXFLAGS='-DNDEBUG -std=c++11 -O4 -w' \
-  --enable-fieldvector-size-is-method \
-  --enable-dunedevel \
+CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc CXXFLAGS='-DNDEBUG -std=c++11 -Os -g -w' \
   --enable-parallel \
   --disable-documentation  INKSCAPE=no"
-CMAKE_FLAGS="-Wno-dev -DPETSC_DIR=/usr/lib/petsc -DPETSC_ARCH=linux-gnu-cxx-opt -DCMAKE_CXX_COMPILER=/usr/bin/mpic++ -DCMAKE_C_COMPILER=/usr/bin/mpicc -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DCMAKE_BUILD_TYPE=RELEASE"
+CMAKE_FLAGS="-Wno-dev -DCMAKE_BUILD_TYPE=RELEASE"
 MAKE_FLAGS="-j8 -l8"
 BUILDDIR=build-gcc-release

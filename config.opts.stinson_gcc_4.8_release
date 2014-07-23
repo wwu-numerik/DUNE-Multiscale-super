@@ -1,8 +1,0 @@
-CONFIGURE_FLAGS="CXX=g++-4.8 CC=gcc-4.8 CXXFLAGS='-std=c++0x -O4' \
-  --enable-fieldvector-size-is-method \
-  --enable-dunedevel \
-  --enable-parallel \
-  --disable-documentation  INKSCAPE=no"
-CMAKE_FLAGS="-Wno-dev -DPETSC_DIR=/usr/lib/petsc -DPETSC_ARCH=linux-gnu-cxx-opt -DENABLE_MPI=1 -DCMAKE_DISABLE_FIND_PACKAGE_MPI=0 -DCMAKE_BUILD_TYPE=RELEASE"
-MAKE_FLAGS="-j8 -l8"
-BUILDDIR=build-gcc-debug-4.8-release
