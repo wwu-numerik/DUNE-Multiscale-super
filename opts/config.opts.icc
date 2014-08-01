@@ -3,7 +3,7 @@ CONFIGURE_FLAGS="
   CXX=icpc \
   F77=ifort \
   CXXFLAGS='-fno-strict-aliasing -DDEBUG -g3 -std=c++0x -Wextra -Wall' \
-  --enable-fieldvector-size-is-method \
+  --disable-parallel \
   --disable-documentation \
   INKSCAPE=no \
 "
