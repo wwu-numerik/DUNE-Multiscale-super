@@ -40,3 +40,6 @@
 [submodule "dune-functions"]
 	path = dune-functions
 	url = http://git.dune-project.org/repositories/exadune/functions
+[submodule "dune-alugrid"]
+	path = dune-alugrid
+	url = https://users.dune-project.org/repositories/projects/renemilk-dune-alugrid.git
