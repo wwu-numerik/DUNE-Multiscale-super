@@ -37,3 +37,9 @@
 [submodule "dune-rb"]
 	path = dune-rb
 	url = http://users.dune-project.org/repositories/projects/dune-rb-dev.git
+[submodule "dune-pdelab"]
+	path = dune-pdelab
+    url = https://users.dune-project.org/repositories/projects/dune-pdelab-unofficial.git
+[submodule "dune-typetree"] 
+    path = dune-typetree
+	url = http://git.dune-project.org/repositories/dune-typetree 
