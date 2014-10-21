@@ -6,5 +6,5 @@ CONFIGURE_FLAGS="
   --enable-parallel \
   --disable-documentation  INKSCAPE=no"
 CMAKE_FLAGS="-Wno-dev -DCMAKE_BUILD_TYPE=DEBUG"
-MAKE_FLAGS="-j8 -l8"
+MAKE_FLAGS="-j4 -l4"
 BUILDDIR=build-gcc-snapshot-debug
