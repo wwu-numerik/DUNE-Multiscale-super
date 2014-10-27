@@ -2,7 +2,7 @@ CONFIGURE_FLAGS=" \
   CC=clang \
   CXX=clang++ \
   F77=gfortran \
-  CXXFLAGS='-DDEBUG -g3 -ggdb -std=c++14 -Wextra -Wall' \
+  CXXFLAGS='-DDEBUG -g3 -ggdb -std=c++1y -Wextra -Wall' \
   --enable-parallel \
   --disable-documentation \
   INKSCAPE=no \
