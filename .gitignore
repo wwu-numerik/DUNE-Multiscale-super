@@ -23,3 +23,6 @@ Makefile
 *.ALU?dGrid
 sumatra
 massif
+local/src/eigen
+local/src/boost
+local/lib
