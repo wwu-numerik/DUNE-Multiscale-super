@@ -7,7 +7,7 @@ CONFIGURE_FLAGS="
   --disable-documentation \
   INKSCAPE=no \
 "
-CMAKE_FLAGS=" -Wno-dev -DCMAKE_BUILD_TYPE=DEBUG"
+CMAKE_FLAGS=" -Wno-dev -DCMAKE_BUILD_TYPE=RelWithDebInfo"
 MAKE_FLAGS="-j4 -l4"
 BUILDDIR=build-intel-release
 
