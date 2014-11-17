@@ -1,5 +1,5 @@
 CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc \
-  CXXFLAGS='-DNDEBUG -std=c++11 -O3 -g -w' \
+  CXXFLAGS='-DNDEBUG -std=c++11 -O3 -g -w -DDUNE_STUFF_FUNCTIONS_DISABLE_CHECKS' \
   --enable-parallel \
   --disable-documentation  INKSCAPE=no"
 CMAKE_FLAGS="-Wno-dev -DCMAKE_BUILD_TYPE=RelWithDebInfo"

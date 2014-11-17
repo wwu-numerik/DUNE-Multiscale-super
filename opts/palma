@@ -2,7 +2,7 @@ CONFIGURE_FLAGS="
   CC=mpicc \
   CXX=mpic++ \
   F77=gfortran \
-  CXXFLAGS='-fno-strict-aliasing -DNDEBUG -g -O3 -std=c++0x ' \
+  CXXFLAGS='-fno-strict-aliasing -DNDEBUG -g -O3 -std=c++0x -DDUNE_STUFF_FUNCTIONS_DISABLE_CHECKS' \
   --enable-fieldvector-size-is-method \
   --disable-documentation \
   --enable-parallel \
