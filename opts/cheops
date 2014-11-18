@@ -1,8 +1,9 @@
 CONFIGURE_FLAGS="CXX=mpic++ CC=mpicc \
-  CXXFLAGS='-DNDEBUG -std=c++11 -O3 -g -w' \
+  CXXFLAGS='-DNDEBUG -std=c++11 -O3 -g -w -DDUNE_STUFF_FUNCTIONS_DISABLE_CHECKS' \
+  LDFLAGS='-lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -liomp5 -lpthread -lgfortran' \
   --enable-parallel \
   --with-parmetis=/home/skaulman/local \ 
   --disable-documentation  INKSCAPE=no"
-CMAKE_FLAGS="-Wno-dev -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBOOST_ROOT=../local -DBoost_NO_SYSTEM_PATHS=TRUE -DPARMETIS_INCLUDE_DIR=/home/skaulman/local/include -DPARMETIS_LIBRARY=/home/skaulman/local/lib/libparmetis.a -DEIGEN3_INCLUDE_DIR=/home/skaulman/cmake_multiscale/local/include/eigen3"
+CMAKE_FLAGS="-Wno-dev -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBOOST_ROOT=../local -DBoost_NO_SYSTEM_PATHS=TRUE -DPARMETIS_INCLUDE_DIR=/home/skaulman/local/include -DPARMETIS_LIBRARY=/home/skaulman/local/lib/libparmetis.a -DEIGEN3_INCLUDE_DIR=/home/skaulman/cmake_multiscale/local/include/eigen3 -DSUPERLU_LIBRARY=/opt/rrzk/lib/superlu/superlu_4.3/gnu/libsuperlu_lp64.a -DSUPERLU_INCLUDE_DIR=/home/skaulman/cmake_multiscale/local/src/SuperLU_4.3/SRC" \
 MAKE_FLAGS="-j1 -l1"
-BUILDDIR=build-gcc-release
+BUILDDIR=/scratch/skaulman/dune/
