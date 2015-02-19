@@ -10,9 +10,13 @@ else
 fi
 }
 
-
+CMD=""
 if [ $(type -t sd) ] ; then
-  CMD="sd ionice -c 3 nice time ./dune-common/bin/dunecontrol"
-else
-  CMD="ionice -c 3 nice time ./dune-common/bin/dunecontrol"
+  CMD="sd "
 fi
+
+if [ $(ionice -c 3 /bin/true) ] ; then
+  CMD="${CMD} ionice -c 3  "
+fi
+
+CMD="${CMD} nice time ./dune-common/bin/dunecontrol"
