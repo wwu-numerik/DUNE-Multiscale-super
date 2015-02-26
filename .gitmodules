@@ -37,3 +37,6 @@
 [submodule "dune-functions"]
 	path = dune-functions
 	url = http://git.dune-project.org/repositories/exadune/functions
+[submodule "dune-mlmc"]
+	path = dune-mlmc
+	url = https://users.dune-project.org/repositories/projects/dune-mlmc.git
