@@ -10,9 +10,14 @@ else
 fi
 }
 
+if hash ionice 2>/dev/null; then
+  IONICE="ionice -c 3"
+else
+  IONICE=""
+fi
 
 if [ $(type -t sd) ] ; then
-  CMD="sd ionice -c 3 nice time ./dune-common/bin/dunecontrol"
+  CMD="sd ${IONICE} nice time ./dune-common/bin/dunecontrol"
 else
-  CMD="ionice -c 3 nice time ./dune-common/bin/dunecontrol"
+  CMD="${IONICE} nice time ./dune-common/bin/dunecontrol"
 fi
