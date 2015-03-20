@@ -10,7 +10,7 @@ else
 fi
 }
 
-if hash ionice 2>/dev/null; then
+if  [ $(ionice -c 3 /bin/true) ] ; then
   IONICE="ionice -c 3"
 else
   IONICE=""
