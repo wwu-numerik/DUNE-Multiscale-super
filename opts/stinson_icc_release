@@ -7,7 +7,7 @@ CONFIGURE_FLAGS="
   --disable-documentation \
   INKSCAPE=no \
 "
-CMAKE_FLAGS=" -Wno-dev -DCMAKE_BUILD_TYPE=''"
+CMAKE_FLAGS=" -Wno-dev -DCMAKE_BUILD_TYPE=''  -DSTDTHREAD_LINK_FLAGS='-lpthread -pthread'"
 #MAKE_FLAGS="-- -j4 -l4"
 BUILDDIR=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/icc-release
 
