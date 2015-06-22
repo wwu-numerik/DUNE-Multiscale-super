@@ -1,16 +1,16 @@
 [gcc_4.8]
-file = opts/gcc
+file = config.opts/gcc
 cc = gcc
 
 [icc_14]
-file = opts/icc
+file = config.opts/icc
 cc = icc
 
 [clang_3.5]
-file = opts/clang-3.5
+file = config.opts/clang-3.5
 cc = clang-3.5
 
 [gcc_5.0]
-file = opts/gcc-snapshot 
+file = config.opts/gcc-snapshot 
 cc = /usr/lib/gcc-snapshot/bin/gcc
 
