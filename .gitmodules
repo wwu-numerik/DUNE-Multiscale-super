@@ -15,7 +15,7 @@
 	url = http://git.dune-project.org/repositories/exadune/geometry
 [submodule "dune-stuff"]
 	path = dune-stuff
-	url = http://users.dune-project.org/repositories/projects/dune-stuff.git
+	url = https://github.com/wwu-numerik/dune-stuff
 [submodule "dune-multiscale"]
 	path = dune-multiscale
 	url = http://users.dune-project.org/repositories/projects/dune-multiscale.git
