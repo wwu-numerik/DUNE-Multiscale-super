@@ -1,0 +1,13 @@
+CONFIGURE_FLAGS="
+  CC=gcc \
+  CXX=g++ \
+  F77=gfortran \
+  CXXFLAGS='-DDEBUG -g3 -ggdb -std=c++11 -Wextra -Wall' \
+  --enable-parallel \
+  --disable-documentation \
+  INKSCAPE=no \
+"
+
+MAKE_FLAGS="-- -j34 -l34"
+BUILDDIR=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/gcc-release
+CMAKE_FLAGS="-Wno-dev  -DSTDTHREAD_LINK_FLAGS='-lpthread -pthread'"
