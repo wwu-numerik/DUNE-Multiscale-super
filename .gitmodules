@@ -1,42 +1,42 @@
 [submodule "dune-common"]
 	path = dune-common
-	url = http://git.dune-project.org/repositories/exadune/common
+	url = https://gitlab.dune-project.org/exadune/dune-common.git
 [submodule "dune-grid"]
 	path = dune-grid
-	url = http://git.dune-project.org/repositories/exadune/grid
+	url = https://gitlab.dune-project.org/exadune/dune-grid.git
 [submodule "dune-istl"]
 	path = dune-istl
-	url = http://git.dune-project.org/repositories/exadune/istl
+	url = https://gitlab.dune-project.org/exadune/dune-istl.git
 [submodule "dune-localfunctions"]
 	path = dune-localfunctions
-	url = http://git.dune-project.org/repositories/exadune/localfunctions
+	url = https://gitlab.dune-project.org/exadune/dune-localfunctions.git
 [submodule "dune-geometry"]
 	path = dune-geometry
-	url = http://git.dune-project.org/repositories/exadune/geometry
+	url = https://gitlab.dune-project.org/exadune/dune-geometry.git
 [submodule "dune-stuff"]
 	path = dune-stuff
-	url = https://github.com/wwu-numerik/dune-stuff
+	url = https://github.com/wwu-numerik/dune-stuff.git
 [submodule "dune-multiscale"]
 	path = dune-multiscale
-	url = http://users.dune-project.org/repositories/projects/dune-multiscale.git
+	url = https://github.com/wwu-numerik/dune-multiscale.git
 [submodule "dune-spgrid"]
 	path = dune-spgrid
 	url = http://users.dune-project.org/repositories/projects/renemilk-dune-spgrid.git
 [submodule "local/bin"]
 	path = local/bin
-	url = http://users.dune-project.org/repositories/projects/dune-demos-bin.git
+	url = https://github.com/wwu-numerik/dune-demos-bin
 [submodule "dune-pdelab"]
 	path = dune-pdelab
 	url = https://users.dune-project.org/repositories/projects/dune-pdelab-unofficial.git
 [submodule "dune-typetree"]
 	path = dune-typetree
-	url = http://git.dune-project.org/repositories/exadune/typetree
+	url = https://gitlab.dune-project.org/exadune/dune-typetree.git
 [submodule "dune-gdt"]
 	path = dune-gdt
-	url = http://users.dune-project.org/repositories/projects/dune-gdt.git
+	url = https://github.com/pymor/dune-gdt.git 
 [submodule "dune-functions"]
 	path = dune-functions
-	url = http://git.dune-project.org/repositories/exadune/functions
+	url = https://gitlab.dune-project.org/exadune/dune-functions.git
 [submodule "dune-mlmc"]
 	path = dune-mlmc
 	url = https://users.dune-project.org/repositories/projects/dune-mlmc.git
