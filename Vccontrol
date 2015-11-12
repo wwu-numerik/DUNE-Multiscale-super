@@ -1,0 +1,75 @@
+#!/bin/sh
+
+case $OPTS in
+    "")
+        echo >&2 "Please specify an opts file in \$OPTS"
+        exit 99
+        ;;
+esac
+
+. "$OPTS" || {
+    result=$?
+    echo >&2 "Error reading opts file $OPTS"
+    exit $?
+}
+
+SRCDIR=$(readlink -f "$(dirname "$0")")/Vc
+
+case $BUILDDIR in
+    "") echo >&2 "Please set BUILDDIR in $OPTS"
+        exit 1
+        ;;
+    /*) ;;
+    *) BUILDDIR=$(readlink -f "$(dirname "$0")")/$BUILDDIR;;
+esac
+
+BUILDDIR=$BUILDDIR/Vc
+INSTDIR=${BUILDDIR}inst
+
+parse_flags() {
+    for arg;
+    do case $arg in
+           -*) ;; #ignore options
+           *=*)   #variable assignment
+               name=${arg%%=*}
+               val=${arg#*=}
+               eval "$name=\$val"
+               export "$name"
+               ;;
+           # ignore other junk
+       esac
+    done
+}
+
+eval "parse_flags $CONFIGURE_FLAGS"
+
+action=$1
+shift
+
+case $action in
+    autogen) ;;
+    configure)
+        (
+            set -ex
+            mkdir -p "$BUILDDIR"
+            cd "$BUILDDIR"
+            cmake -DCMAKE_INSTALL_PREFIX="$INSTDIR"             \
+                  -DBUILD_TESTING=OFF                           \
+                  ${CXX:+"-DCMAKE_CXX_COMPILER=$CXX"}           \
+                  ${CXXFLAGS:+"-DCMAKE_CXX_FLAGS=$CXXFLAGS"}    \
+                  "$SRCDIR"
+        )
+        ;;
+    make)
+        (
+            set -ex
+            export MAKE_FLAGS
+            cd "$BUILDDIR"
+            make "$@"
+        )
+        ;;
+    *)
+        echo >&2 "Unknown action $action to Vccontrol"
+        exit 1
+        ;;
+esac

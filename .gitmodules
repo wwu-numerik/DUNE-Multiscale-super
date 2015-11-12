@@ -46,3 +46,6 @@
 [submodule "dune-patches"]
 	path = dune-patches
 	url = https://users.dune-project.org/repositories/projects/dune-patches.git
+[submodule "Vc"]
+	path = Vc
+	url = https://github.com/VcDevel/Vc.git
