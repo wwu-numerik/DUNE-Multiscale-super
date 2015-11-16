@@ -1,6 +1,6 @@
 [submodule "dune-common"]
 	path = dune-common
-	url = https://gitlab.dune-project.org/exadune/dune-common.git
+	url = https://gitlab.dune-project.org/rene.milk/dune-common.git
 [submodule "dune-grid"]
 	path = dune-grid
 	url = https://gitlab.dune-project.org/exadune/dune-grid.git
