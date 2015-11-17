@@ -7,6 +7,8 @@ case $OPTS in
         ;;
 esac
 
+CUSTOM_VC_SETTINGS=false
+
 . "$OPTS" || {
     result=$?
     echo >&2 "Error reading opts file $OPTS"
@@ -42,6 +44,11 @@ parse_flags() {
 }
 
 eval "parse_flags $CONFIGURE_FLAGS"
+
+if $CUSTOM_VC_SETTINGS; then
+    CXX=$VC_CXX
+    CXXFLAGS=$VC_CXXFLAGS
+fi
 
 action=$1
 shift
