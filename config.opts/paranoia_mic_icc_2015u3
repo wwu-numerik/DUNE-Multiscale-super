@@ -1,3 +1,8 @@
+if ! [ "$SCHROOT_CHROOT_NAME" = intel-2015u3 ]
+then echo >&2 "Error: Must run in schroot -c intel-2015u3"
+     exit 99
+fi
+
 CONFIGURE_FLAGS="
   CC=/opt/intel/composer_xe_2015.3.187/bin/intel64_mic/icc \
   CXX=/opt/intel/composer_xe_2015.3.187/bin/intel64_mic/icpc \
@@ -14,14 +19,16 @@ CMAKE_FLAGS="--debug-output --debug-trycompile -DSTDTHREAD_LINK_FLAGS='-lpthread
     -DCMAKE_SYSTEM_PROCESSOR=k1om -DCMAKE_SYSTEM_VERSION=1 -D_CMAKE_TOOLCHAIN_PREFIX=x86_64-k1om-linux- \
 -DALIGNOF_DOUBLE=8 -DALIGNOF_FLOAT=4 -DALIGNOF_SIZE_T=8 -DALIGNOF_UINT32_T=4 -DALIGNOF_UINT64_T=8 \
 -DTHREADS_PTHREAD_ARG=-pthread \
--DBOOST_ROOT=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/mic/local -DBoost_USE_STATIC_LIBS=TRUE \
--DSUITESPARSE_INCLUDE_DIR_HINTS=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/mic/local/include \
-    -DSUITESPARSE_LIBRARY_DIR_HINTS=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/mic/local/lib \
-    -DSUITESPARSE_CHECK_LIBRARY_DIRS=/opt/mpss/3.5.2/sysroots/k1om-mpss-linux/usr/lib64/ \
+-DBOOST_ROOT=${HOME}/Projekte/EXA-DUNE/DUNE-Multiscale-super/mic/local -DBoost_USE_STATIC_LIBS=TRUE \
+-DSUITESPARSE_INCLUDE_DIR_HINTS=${HOME}/Projekte/EXA-DUNE/DUNE-Multiscale-super/mic/local/include \
+    -DSUITESPARSE_LIBRARY_DIR_HINTS=${HOME}/Projekte/EXA-DUNE/DUNE-Multiscale-super/mic/local/lib \
+    -DSUITESPARSE_CHECK_LIBRARY_DIRS=/usr/linux-k1om-4.7/linux-k1om/usr/lib64/ \
 -DDUNE_USE_ONLY_STATIC_LIBS=ON -DTBB_EXTRA_COMPILE_OPTIONS='-mmic' \
-    -DBLAS_FOUND=TRUE -DUMFPACK_ROOT=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/mic/local \
+    -DBLAS_FOUND=TRUE -DUMFPACK_ROOT=${HOME}/Projekte/EXA-DUNE/DUNE-Multiscale-super/mic/local \
     -DBLAS_LIBRARIES='-Wl,--start-group /opt/intel/composer_xe_2015.3.187/mkl/lib/mic/libmkl_intel_lp64.a /opt/intel/composer_xe_2015.3.187/mkl/lib/mic/libmkl_core.a /opt/intel/composer_xe_2015.3.187/mkl/lib/mic/libmkl_intel_thread.a -Wl,--end-group' \
     -DLAPACK_LIBRARIES=/opt/intel/composer_xe_2015.3.187/mkl/lib/mic/libmkl_scalapack_lp64.a \
 -DTBB_LIBRARIES=/opt/intel/composer_xe_2015.3.187/tbb/lib/mic/libtbb.so"
-BUILDDIR=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/mic
-#'
+BUILDDIR=${HOME}/Projekte/EXA-DUNE/DUNE-Multiscale-super/build_paranoia_mic_icc_2015u3
+MAKE_FLAGS="-- -j2 -l4"
+USE_CMAKE=yes
+#
