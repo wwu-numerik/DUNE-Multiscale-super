@@ -48,6 +48,7 @@ eval "parse_flags $CONFIGURE_FLAGS"
 if $CUSTOM_VC_SETTINGS; then
     CXX=$VC_CXX
     CXXFLAGS=$VC_CXXFLAGS
+    CMAKE_BUILD_TYPE=$VC_CMAKE_BUILD_TYPE
 fi
 
 action=$1
@@ -60,10 +61,11 @@ case $action in
             set -ex
             mkdir -p "$BUILDDIR"
             cd "$BUILDDIR"
-            cmake -DCMAKE_INSTALL_PREFIX="$INSTDIR"             \
-                  -DBUILD_TESTING=OFF                           \
-                  ${CXX:+"-DCMAKE_CXX_COMPILER=$CXX"}           \
-                  ${CXXFLAGS:+"-DCMAKE_CXX_FLAGS=$CXXFLAGS"}    \
+            cmake -DCMAKE_INSTALL_PREFIX="$INSTDIR"                             \
+                  -DBUILD_TESTING=OFF                                           \
+                  ${CXX:+"-DCMAKE_CXX_COMPILER=$CXX"}                           \
+                  ${CXXFLAGS:+"-DCMAKE_CXX_FLAGS=$CXXFLAGS"}                    \
+                  ${CMAKE_BUILD_TYPE:+"-DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE"}   \
                   "$SRCDIR"
         )
         ;;
