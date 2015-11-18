@@ -9,5 +9,5 @@ CONFIGURE_FLAGS="
 CMAKE_FLAGS=" -Wno-dev -DCMAKE_BUILD_TYPE=DEBUG "
 MAKE_FLAGS="-- -j2 -l2"
 
-BUILDDIR=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/icc-debug
+BUILDDIR=/home/r_milk01/fast_projekte/uni/dune/build/patches-multiscale/icc-debug
 # -Wdisabled-optimization -Wmissing-declarations -Wmissing-include-dirs
