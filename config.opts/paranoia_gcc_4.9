@@ -1,9 +1,0 @@
-BUILDDIR=/home/joe/Projekte/EXA-DUNE/DUNE-Multiscale-super/build_gcc_4.9
-CONFIGURE_FLAGS="CXX=g++-4.9 CC=gcc-4.9 CXXFLAGS=' -DDEBUG -g3 -ggdb -std=c++14 -O0' \
-  --enable-parallel \
-  --disable-documentation  INKSCAPE=no"
-CMAKE_FLAGS="-Wno-dev -DCMAKE_BUILD_TYPE=DEBUG \
-        -DSTDTHREAD_LINK_FLAGS='-lpthread -pthread' \
-        -DCMAKE_PREFIX_PATH=$BUILDDIR/Vcinst"
-MAKE_FLAGS="-- -j2 -l4"
-USE_CMAKE=yes

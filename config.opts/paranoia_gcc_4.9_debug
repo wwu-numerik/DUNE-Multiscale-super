@@ -1,0 +1,17 @@
+# -*- sh -*-
+BUILDDIR=/home/joe/Projekte/EXA-DUNE/DUNE-Multiscale-super/build_paranoia_gcc_4.9_debug
+CMAKE_BUILD_TYPE=Debug
+CXX=g++-4.9
+CXXFLAGS='-DDEBUG -g3 -ggdb -std=c++14 -O0'
+CC=gcc-4.9
+CONFIGURE_FLAGS="CXX='$CXX' CC='$CC' CXXFLAGS='$CXXFLAGS' \
+  --disable-parallel \
+  --disable-documentation  INKSCAPE=no"
+#Disable boost::fusion to make ISTL compile (The MultiTypeBlockVector uses it,
+#is itself used in the tutorial, but is broken)
+CMAKE_FLAGS="-Wno-dev -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE \
+        -DSTDTHREAD_LINK_FLAGS='-lpthread -pthread' \
+        -DCMAKE_PREFIX_PATH=$BUILDDIR/Vcinst \
+        -DHAVE_BOOST_FUSION=NOTFOUND"
+MAKE_FLAGS="-- -j2 -l4"
+USE_CMAKE=yes
