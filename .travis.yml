@@ -1,0 +1,14 @@
+
+sudo: required
+dist: trusty
+language: generic
+
+script:
+    - cd ${TRAVIS_BUILD_DIR}
+    - git submodule update --init --recursive
+    - git submodule status
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
