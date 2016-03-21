@@ -9,6 +9,6 @@ CONFIGURE_FLAGS="
 "
 CMAKE_FLAGS=" -Wno-dev -DCMAKE_BUILD_TYPE=''  -DSTDTHREAD_LINK_FLAGS='-lpthread -pthread'"
 MAKE_FLAGS="-- -j1 -l1"
-BUILDDIR=/home/r_milk01/fast_projekte/uni/dune/build/dune-multiscale/icc-release
+BUILDDIR=/home/r_milk01/projekte/uni/dune/build/dune-multiscale/icc-release
 
 # -Wdisabled-optimization -Wmissing-declarations -Wmissing-include-dirs
