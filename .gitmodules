@@ -21,25 +21,25 @@
 	url = https://github.com/wwu-numerik/dune-multiscale.git
 [submodule "dune-spgrid"]
 	path = dune-spgrid
-	url = http://users.dune-project.org/repositories/projects/renemilk-dune-spgrid.git
+	url = https://gitlab.dune-project.org/rene.milk/dune-spgrid.git
 [submodule "local/bin"]
 	path = local/bin
 	url = https://github.com/wwu-numerik/dune-demos-bin
 [submodule "dune-pdelab"]
 	path = dune-pdelab
-	url = https://users.dune-project.org/repositories/projects/dune-pdelab-unofficial.git
+	url = https://gitlab.dune-project.org/rene.milk/dune-pdelab.git
 [submodule "dune-typetree"]
 	path = dune-typetree
 	url = https://gitlab.dune-project.org/exadune/dune-typetree.git
 [submodule "dune-gdt"]
 	path = dune-gdt
-	url = https://github.com/pymor/dune-gdt.git 
+	url = https://github.com/dune-community/dune-gdt.git 
 [submodule "dune-functions"]
 	path = dune-functions
 	url = https://gitlab.dune-project.org/exadune/dune-functions.git
 [submodule "dune-mlmc"]
 	path = dune-mlmc
-	url = https://users.dune-project.org/repositories/projects/dune-mlmc.git
+	url = https://github.com/wwu-numerik/dune-mlmc.git
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/wwu-numerik/scripts.git
