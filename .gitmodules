@@ -46,3 +46,6 @@
 [submodule "experiments"]
 	path = experiments
 	url = https://github.com/wwu-numerik/dune-multiscale-experiments
+[submodule "config.opts"]
+	path = config.opts
+	url = https://github.com/wwu-numerik/dune-config-opts.git
