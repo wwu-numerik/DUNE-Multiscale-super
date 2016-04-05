@@ -55,3 +55,6 @@
 [submodule "dune-testtools"]
 	path = dune-testtools
 	url = https://gitlab.dune-project.org/quality/dune-testtools.git
+[submodule "dune-xt-common"]
+	path = dune-xt-common
+	url = https://github.com/dune-community/dune-xt-common.git
