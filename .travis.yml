@@ -27,6 +27,9 @@ addons:
     - g++-4.9
     - gcc-4.9
 
+install:
+    - sudo -E apt-get install -y -q libtbb-dev python-pip libmetis-dev python3-pip libfftw3-mpi-dev libfftw3-bin libfftw3-dev libopenmpi-dev openmpi-bin
+    
 before_script:
     - pushd ${TRAVIS_BUILD_DIR}/.travis
     - ./init_sshkey.sh ${encrypted_6207618e9fa1_key} ${encrypted_6207618e9fa1_iv} wwu-numerik.github.io
