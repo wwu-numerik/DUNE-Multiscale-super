@@ -16,7 +16,7 @@ sudo -E pip install virtualenv cpp-coveralls
 
 
 ./dune-common/bin/dunecontrol --builddir=${BUILDDIR} configure
-for i in common la grid functions ; do
+for i in multiscale mlmc ; do
   ./dune-common/bin/dunecontrol --builddir=${BUILDDIR} --only=dune-xt-${i} bexec make doc
 done
 
