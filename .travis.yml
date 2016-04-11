@@ -1,12 +1,40 @@
+# This file is part of the dune-xt project:
+#   https://github.com/wwu-numerik/dune-multiscale-super
+# The copyright lies with the authors of this file (see below).
+# License: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
+# Authors:
+#   Rene Milk       (2016)
 
 sudo: required
 dist: trusty
 language: generic
 
-script:
-    - cd ${TRAVIS_BUILD_DIR}
-    - git submodule update --init --recursive
-    - git submodule status
+addons:
+  apt:
+    sources:
+    - 'ubuntu-toolchain-r-test'
+    packages:
+    - cmake
+    - doxygen
+    - texlive-base
+    - python-virtualenv
+    - libboost1.55-all-dev
+    - python-pip
+    - libtbb-dev
+    - libsuitesparse-dev
+    - ninja-build
+    - git
+    - g++-4.9
+    - gcc-4.9
+
+before_script:
+    - pushd ${TRAVIS_BUILD_DIR}/.travis
+    - ./init_sshkey.sh ${encrypted_6207618e9fa1_key} ${encrypted_6207618e9fa1_iv} wwu-numerik.github.io
+    - popd
+
+deploy:
+    provider: script
+    script: .travis/deploy_docs.sh
 
 notifications:
   email:
