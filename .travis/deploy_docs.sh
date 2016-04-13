@@ -13,8 +13,6 @@ pushd ${BASEDIR}
 
 git clone git@github.com:wwu-numerik/wwu-numerik.github.io.git site
 
-${THISDIR}/build_docs.sh ${BUILDDIR}
-
 cd site
 git config user.name "DUNE Community Bot"
 git config user.email "dune-community.bot@wwu.de"
