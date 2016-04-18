@@ -33,7 +33,7 @@
 	url = https://gitlab.dune-project.org/exadune/dune-typetree.git
 [submodule "dune-gdt"]
 	path = dune-gdt
-	url = https://github.com/dune-community/dune-gdt.git 
+	url = https://github.com/dune-community/dune-gdt-archive.git 
 [submodule "dune-functions"]
 	path = dune-functions
 	url = https://gitlab.dune-project.org/exadune/dune-functions.git
