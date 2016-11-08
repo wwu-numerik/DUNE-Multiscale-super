@@ -19,7 +19,20 @@ script:
   - git submodule update --init --recursive
   - git submodule status
   - python -c "from ConfigParser import SafeConfigParser as sf ; f = sf() ; f.readfp(open('external-libraries.cfg', 'rt'))"
-    
+  - |
+    if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] ; then
+        docker login --email=$DOCKER_HUB_EMAIL --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD
+        ./.travis/docker/update_image.py ${COMPILER} ${TRAVIS_BRANCH}
+    fi
+
+
+matrix:
+  include:
+    - env: COMPILER=gcc-5
+    - env: COMPILER=gcc-6
+    - env: COMPILER=clang-3.8
+    - env: COMPILER=clang-3.9
+
 git:
   # we do that manually in script section to be able to use our own git binary
   submodules: false
@@ -28,3 +41,9 @@ notifications:
   email:
     on_success: change
     on_failure: change
+
+env:
+  global:
+  - secure: fjdOtNOxkO0fsqKfBnx+LPVWhoSbMU/dBgiYB6Ircv2khrTd74MkUZJo5WQzdQM8lmeiOKzf1v3VXz2r7Vu9A6wT5A4YmKvAgUEElDPHVEgYsWBgsIqzkzPQue1Lz/SBo3LGHOUbNQd1XR11xds2d2BLKnVxKUhNiWc8kE3W+IY=
+  - secure: Me7efPHVvpzxQ9c4mccvm+cReZGvcUbiDwuHgpcYbxDC9Jou40rYekAFkDbXWEegwOp+5mcjPgZgfK5S44AW/t0c+NiJnJFqLkOkq3RdmIBL1KRESdquQVwosz8uHCMAKnLsIq+ruIMwN3Ze1BAkyANwSX6CfP+NZLXjJfKb+KA=
+  - secure: HVZeIalX1ZxEOzXqpYtSoOAM9yobz+Cs2AGx78DYwXTXr3lTySJ7XMBzd41Ica3neTnsOyr+7ZbECZhjb0hvg9ftuNIdPCHXJILsusrrpeuYxkkmFYQTpaSXTGH3SOauHAek3NERd3GCQ790BQ83sdKY1DuQ1RN5D86WitqbMvc=
