@@ -15,10 +15,10 @@
 	url = http://git.dune-project.org/repositories/exadune/geometry
 [submodule "dune-stuff"]
 	path = dune-stuff
-	url = http://users.dune-project.org/repositories/projects/dune-stuff.git
+	url = https://github.com/wwu-numerik/dune-stuff
 [submodule "dune-multiscale"]
 	path = dune-multiscale
-	url = http://users.dune-project.org/repositories/projects/dune-multiscale.git
+	url = https://github.com/wwu-numerik/dune-multiscale
 [submodule "dune-spgrid"]
 	path = dune-spgrid
 	url = http://users.dune-project.org/repositories/projects/renemilk-dune-spgrid.git
@@ -37,3 +37,6 @@
 [submodule "dune-functions"]
 	path = dune-functions
 	url = http://git.dune-project.org/repositories/exadune/functions
+[submodule "config-opts"]
+	path = config.opts
+	url = git@github.com:wwu-numerik/dune-config-opts.git
