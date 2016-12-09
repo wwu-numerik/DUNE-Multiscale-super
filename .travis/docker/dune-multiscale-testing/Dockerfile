@@ -5,34 +5,18 @@ ARG cc
 ARG cxx
 ENV CC $cc
 ENV CXX $cxx
-
 ENV MY_MODULE dune-multiscale
+ENV OPTS config.opts/travis.ninja
+ENV PATH /usr/lib/ccache:${PATH}
+ENV SRC_DCTRL ${SUPERDIR}/dune-common/bin/dunecontrol
 
 WORKDIR ${SUPERDIR}
 ADD . ${SUPERDIR}
 
-
-# TRAVIS before_install:
-ENV OPTS config.opts/travis.ninja
-
-RUN cd ${SUPERDIR}
-RUN git submodule foreach git reset --hard
-RUN git submodule update --init --recursive
-RUN git submodule status
-
-ENV PATH /usr/lib/ccache:${PATH}
-# our local scripts look for an OPTS env entry
-RUN ./local/bin/download_external_libraries.py
-RUN ./local/bin/build_external_libraries.py
-
-
-# TRAVIS install
-ENV SRC_DCTRL ${SUPERDIR}/dune-common/bin/dunecontrol
-# RUN ${SRC_DCTRL} ${BLD} all
-
-# ensures ${MY_MODULE} from travis own checkout is used via clean mount point, but enables better compile re-use
-# RUN rm -rf ${MY_MODULE}
-# RUN mkdir ${MY_MODULE}
-
-# THE END
-ENV DEBIAN_FRONTEND teletype
+RUN cd ${SUPERDIR} && \
+    git submodule foreach git reset --hard && \
+    git submodule update --init --recursive && \
+    ./local/bin/download_external_libraries.py && \
+    ./local/bin/build_external_libraries.py && \
+    ${SRC_DCTRL} ${BLD} all && \
+    rm -rf ${MY_MODULE} && mkdir ${MY_MODULE}
