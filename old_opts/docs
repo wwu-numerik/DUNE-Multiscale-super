@@ -1,5 +1,0 @@
-CONFIGURE_FLAGS="CXXFLAGS='-fno-strict-aliasing -O0 -std=c++0x ' \
-  --enable-fieldvector-size-is-method \
-  --enable-documentation "
-
-CMAKE_FLAGS="-Wno-dev "
