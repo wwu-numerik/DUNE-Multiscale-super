@@ -1,0 +1,10 @@
+################################
+# Dune module information file #
+################################
+
+#Name of the module
+Module: dune-random-diff
+Version: 1.0
+Maintainer: test@test
+#depending on
+Depends: dune-pdelab

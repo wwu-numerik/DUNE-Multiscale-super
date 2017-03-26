@@ -2,8 +2,5 @@
 .svn
 *~
 .*.swp
-build/
-build-gcc-release
-build-clang-release
-build-gcc-debug
-build-clang-debug
+build*/
+

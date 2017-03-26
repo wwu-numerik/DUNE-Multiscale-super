@@ -13,16 +13,13 @@ fi
 
 path="$basePath/$varDune"
 
+#Exec in the same shell proc
+. ./export.sh /p/sms/sppexa/share/soft/dune-prj/builds/opt
 
 function getOptsFile( )
 {
-if [ x${1} = x ] ; then
-  OPTS=config.opts.wwu_no_documentation
+  OPTS=${1}
   ln -sf ${OPTS} config.opts.last
-else
-	OPTS=${1}
-	ln -sf ${OPTS} config.opts.last
-fi
 }
 
 if  [ $(ionice -c 3 /bin/true) ] ; then
