@@ -34,9 +34,6 @@
 [submodule "dune-gdt"]
 	path = dune-gdt
         url = https://github.com/dune-community/dune-gdt-archive.git
-[submodule "dune-functions"]
-	path = dune-functions
-	url = https://gitlab.dune-project.org/exadune/functions.git
 [submodule "dune-mlmc"]
 	path = dune-mlmc
 	url = https://github.com/wwu-numerik/dune-mlmc.git
@@ -58,3 +55,6 @@
 [submodule "dune-xt-common"]
 	path = dune-xt-common
 	url = https://github.com/dune-community/dune-xt-common.git
+[submodule "dune-functions"]
+	path = dune-functions
+	url = https://rene.milk@gitlab.dune-project.org/rene.milk/dune-functions.git
