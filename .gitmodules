@@ -1,45 +1,60 @@
 [submodule "dune-common"]
 	path = dune-common
-	url = http://git.dune-project.org/repositories/exadune/common
+	url = https://gitlab.dune-project.org/exadune/dune-common.git
 [submodule "dune-grid"]
 	path = dune-grid
-	url = http://git.dune-project.org/repositories/exadune/grid
+	url = https://gitlab.dune-project.org/exadune/dune-grid.git
 [submodule "dune-istl"]
 	path = dune-istl
-	url = http://git.dune-project.org/repositories/exadune/istl
+	url = https://gitlab.dune-project.org/exadune/dune-istl.git
 [submodule "dune-localfunctions"]
 	path = dune-localfunctions
-	url = http://git.dune-project.org/repositories/exadune/localfunctions
+	url = https://gitlab.dune-project.org/exadune/dune-localfunctions.git
 [submodule "dune-geometry"]
 	path = dune-geometry
-	url = http://git.dune-project.org/repositories/exadune/geometry
+	url = https://gitlab.dune-project.org/exadune/dune-geometry.git
 [submodule "dune-stuff"]
 	path = dune-stuff
-	url = http://users.dune-project.org/repositories/projects/dune-stuff.git
+	url = https://github.com/wwu-numerik/dune-stuff.git
 [submodule "dune-multiscale"]
 	path = dune-multiscale
-	url = http://users.dune-project.org/repositories/projects/dune-multiscale.git
+	url = https://github.com/wwu-numerik/dune-multiscale.git
 [submodule "dune-spgrid"]
 	path = dune-spgrid
-	url = http://users.dune-project.org/repositories/projects/renemilk-dune-spgrid.git
+	url = https://gitlab.dune-project.org/rene.milk/dune-spgrid.git
 [submodule "local/bin"]
 	path = local/bin
-	url = http://users.dune-project.org/repositories/projects/dune-demos-bin.git
+	url = https://github.com/dune-community/local-bin.git
 [submodule "dune-pdelab"]
 	path = dune-pdelab
-	url = https://users.dune-project.org/repositories/projects/dune-pdelab-unofficial.git
+	url = https://gitlab.dune-project.org/rene.milk/dune-pdelab.git
 [submodule "dune-typetree"]
 	path = dune-typetree
-	url = http://git.dune-project.org/repositories/exadune/typetree
+	url = https://gitlab.dune-project.org/exadune/dune-typetree.git
 [submodule "dune-gdt"]
 	path = dune-gdt
-	url = http://users.dune-project.org/repositories/projects/dune-gdt.git
+        url = https://github.com/dune-community/dune-gdt-archive.git
 [submodule "dune-functions"]
 	path = dune-functions
-	url = http://git.dune-project.org/repositories/exadune/functions
+	url = https://gitlab.dune-project.org/exadune/functions.git
 [submodule "dune-mlmc"]
 	path = dune-mlmc
-	url = https://users.dune-project.org/repositories/projects/dune-mlmc.git
+	url = https://github.com/wwu-numerik/dune-mlmc.git
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/wwu-numerik/scripts.git
+[submodule "experiments"]
+	path = experiments
+	url = https://github.com/wwu-numerik/dune-multiscale-experiments
+[submodule "config.opts"]
+	path = config.opts
+	url = https://github.com/dune-community/config.opts.git
+[submodule "dune-python"]
+	path = dune-python
+	url = https://gitlab.dune-project.org/quality/dune-python.git
+[submodule "dune-testtools"]
+	path = dune-testtools
+	url = https://gitlab.dune-project.org/quality/dune-testtools.git
+[submodule "dune-xt-common"]
+	path = dune-xt-common
+	url = https://github.com/dune-community/dune-xt-common.git
