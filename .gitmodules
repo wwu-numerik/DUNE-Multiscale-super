@@ -36,7 +36,7 @@
 	url = https://github.com/dune-community/dune-gdt-archive.git 
 [submodule "dune-mlmc"]
 	path = dune-mlmc
-	url = https://github.com/wwu-numerik/dune-mlmc.git
+	url = https://github.com/wwu-numerik/dune-mlmc
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/wwu-numerik/scripts.git
