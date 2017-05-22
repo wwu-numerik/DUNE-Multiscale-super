@@ -12,14 +12,21 @@ def update(branch, cc):
     cxx = cc_mapping[cc]
 
     #for sub in [ 'dune-multiscale-dev']:
-    for sub in ['dune-multiscale-testing', 'dune-multiscale-dev']:
-        dockerfile = os.path.join(os.path.dirname(__file__), sub, 'Dockerfile')
-        repo = 'dunecommunity/{}_{}'.format(sub, cc)
-        for tag in [branch, 'latest']:
-            subprocess.check_call(['docker', 'build', '-f', dockerfile,
-                                '-t', '{}:{}'.format(repo, tag), '--build-arg', 'cc={}'.format(cc),
-                                '--build-arg', 'cxx={}'.format(cxx), '.'])
-        subprocess.check_call(['docker', '--log-level="debug"', 'push', repo])
+    sub = 'dune-multiscale-testing'
+    dockerfile = os.path.join(os.path.dirname(__file__), sub, 'Dockerfile')
+    repo = 'dunecommunity/{}_{}'.format(sub, cc)
+    for tag in [branch, 'latest']:
+        subprocess.check_call(['docker', 'build', '-f', dockerfile,
+                            '-t', '{}:{}'.format(repo, tag), '--build-arg', 'cc={}'.format(cc),
+                            '--build-arg', 'cxx={}'.format(cxx), '.'])
+    subprocess.check_call(['docker', '--log-level="debug"', 'push', repo])
+    sub = 'dune-multiscale-dev'
+    dockerfile = os.path.join(os.path.dirname(__file__), sub, 'Dockerfile')
+    repo = 'dunecommunity/{}'.format(sub)
+    for tag in [branch, 'latest']:
+        subprocess.check_call(['docker', 'build', '-f', dockerfile,
+                            '-t', '{}:{}'.format(repo, tag), '.'])
+    subprocess.check_call(['docker', '--log-level="debug"', 'push', repo])
 
 if __name__ == '__main__':
     if len(sys.argv) > 2:
