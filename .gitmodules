@@ -1,63 +1,68 @@
 [submodule "dune-common"]
 	path = dune-common
-	url = https://gitlab.dune-project.org/exadune/dune-common.git
+	url = https://github.com/dune-community/dune-common.git
+        ignore = dirty
 [submodule "dune-grid"]
 	path = dune-grid
-	url = https://gitlab.dune-project.org/exadune/dune-grid.git
-[submodule "dune-istl"]
-	path = dune-istl
-	url = https://gitlab.dune-project.org/exadune/dune-istl.git
-[submodule "dune-localfunctions"]
-	path = dune-localfunctions
-	url = https://gitlab.dune-project.org/exadune/dune-localfunctions.git
+	url = https://github.com/dune-community/dune-grid.git
+        ignore = dirty
 [submodule "dune-geometry"]
 	path = dune-geometry
-	url = https://gitlab.dune-project.org/exadune/dune-geometry.git
+	url = https://github.com/dune-community/dune-geometry.git
+        ignore = dirty
 [submodule "dune-stuff"]
 	path = dune-stuff
 	url = https://github.com/wwu-numerik/dune-stuff.git
+	ignore = dirty
 [submodule "dune-multiscale"]
 	path = dune-multiscale
 	url = https://github.com/wwu-numerik/dune-multiscale.git
-[submodule "dune-spgrid"]
-	path = dune-spgrid
-	url = https://gitlab.dune-project.org/rene.milk/dune-spgrid.git
-[submodule "local/bin"]
-	path = local/bin
-	url = https://github.com/dune-community/local-bin.git
-[submodule "dune-pdelab"]
-	path = dune-pdelab
-	url = https://gitlab.dune-project.org/rene.milk/dune-pdelab.git
-[submodule "dune-typetree"]
-	path = dune-typetree
-	url = https://gitlab.dune-project.org/exadune/dune-typetree.git
-[submodule "dune-gdt"]
-	path = dune-gdt
-	url = https://github.com/dune-community/dune-gdt-archive.git 
+        ignore = dirty
 [submodule "dune-mlmc"]
 	path = dune-mlmc
-	url = https://github.com/wwu-numerik/dune-mlmc
+	url = https://github.com/wwu-numerik/dune-mlmc.git
+        ignore = dirty
+[submodule "local/bin"]
+	path = bin
+	url = https://github.com/dune-community/local-bin.git
+        ignore = untracked
+[submodule "dune-localfunctions"]
+	path = dune-localfunctions
+	url = https://github.com/dune-mirrors/dune-localfunctions.git
+        ignore = dirty
+[submodule "dune-gdt"]
+	path = dune-gdt
+	url = https://github.com/dune-community/dune-gdt-archive.git
+[submodule "dune-istl"]
+	path = dune-istl
+	url = https://github.com/dune-mirrors/dune-istl.git
+[submodule "dune-pdelab"]
+	path = dune-pdelab
+	url = https://github.com/dune-mirrors/dune-pdelab.git
+[submodule "dune-typetree"]
+	path = dune-typetree
+	url = https://github.com/dune-mirrors/dune-typetree.git
+[submodule "config.opts"]
+	path = config.opts
+	url = https://github.com/dune-community/config.opts.git
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/wwu-numerik/scripts.git
 [submodule "experiments"]
 	path = experiments
 	url = https://github.com/wwu-numerik/dune-multiscale-experiments
-[submodule "config.opts"]
-	path = config.opts
-	url = https://github.com/dune-community/config.opts
 [submodule "dune-python"]
 	path = dune-python
-	url = https://gitlab.dune-project.org/quality/dune-python.git
+	url = https://github.com/dune-mirrors/dune-python.git
 [submodule "dune-testtools"]
 	path = dune-testtools
-	url = https://gitlab.dune-project.org/quality/dune-testtools.git
+	url = https://github.com/dune-mirrors/dune-testtools.git
 [submodule "dune-xt-common"]
 	path = dune-xt-common
 	url = https://github.com/dune-community/dune-xt-common.git
-[submodule "DuneRandomDiff"]
-	path = DuneRandomDiff
-	url = https://git.itwm.fhg.de/git/DuneRandomDiff/
 [submodule "dune-random-diff"]
 	path = dune-random-diff
 	url = https://git.itwm.fhg.de/git/DuneRandomDiff/
+[submodule "dune-pybindxi"]
+	path = dune-pybindxi
+	url = https://github.com/dune-community/dune-pybindxi.git
