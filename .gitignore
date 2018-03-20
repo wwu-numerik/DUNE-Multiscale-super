@@ -4,3 +4,4 @@
 .*.swp
 build*/
 
+dune_setup_venv
