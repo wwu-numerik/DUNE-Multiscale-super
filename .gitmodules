@@ -54,9 +54,6 @@
 [submodule "dune-xt-common"]
 	path = dune-xt-common
 	url = https://github.com/dune-community/dune-xt-common.git
-[submodule "dune-random-diff"]
-	path = dune-random-diff
-	url = https://git.itwm.fhg.de/git/DuneRandomDiff/
 [submodule "dune-pybindxi"]
 	path = dune-pybindxi
 	url = https://github.com/dune-community/dune-pybindxi.git
