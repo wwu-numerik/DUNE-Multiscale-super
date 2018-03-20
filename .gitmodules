@@ -22,7 +22,7 @@
 	path = dune-mlmc
 	url = https://github.com/wwu-numerik/dune-mlmc.git
         ignore = dirty
-[submodule "local/bin"]
+[submodule "bin"]
 	path = bin
 	url = https://github.com/dune-community/local-bin.git
         ignore = untracked
