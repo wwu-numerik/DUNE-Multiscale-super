@@ -4,4 +4,6 @@
 .*.swp
 build*/
 
-dune_setup_venv
+dune_setup_env
+clion
+experiments
