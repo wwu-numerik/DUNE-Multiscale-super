@@ -22,9 +22,9 @@ RUN git submodule status
 
 ENV PATH /usr/lib/ccache:${PATH}
 # our local scripts look for an OPTS env entry
-RUN ./local/bin/download_external_libraries.py
-RUN ./local/bin/build_external_libraries.py
-
+RUN ./bin/download_external_libraries.py
+RUN ./bin/build_external_libraries.py
+RUN virtualenv --python=python3 ./setup-venv && . ./setup-venv/bin/activate
 
 # TRAVIS install
 ENV SRC_DCTRL ${SUPERDIR}/dune-common/bin/dunecontrol
