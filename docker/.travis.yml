@@ -1,0 +1,39 @@
+sudo: false
+dist: trusty
+language: generic
+services: docker
+
+# auto-updates docker engine
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+script:
+  - cd ${TRAVIS_BUILD_DIR}
+  - travis_wait 45 make ${SUBDIR}
+  - |
+    if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] ; then
+        docker login --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD
+        make push_${SUBDIR}
+    fi
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+env:
+  global:
+    - DOCKER_QUIET=-q
+    - DOCKER_PRUNE=1
+  matrix:
+    - SUBDIR=debian_travis
+    - SUBDIR=manylinux
+    - SUBDIR=arch
+    - SUBDIR=testing
+
+matrix:
+  allow_failures:
+  # see https://github.com/dune-community/Dockerfiles/issues/12
+    - env: SUBDIR=manylinux
