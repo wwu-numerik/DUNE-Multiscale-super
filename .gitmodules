@@ -22,8 +22,8 @@
 [submodule "dune-spgrid"]
 	path = dune-spgrid
 	url = https://gitlab.dune-project.org/rene.milk/dune-spgrid.git
-[submodule "local/bin"]
-	path = local/bin
+[submodule "bin"]
+	path = bin
 	url = https://github.com/dune-community/local-bin.git
 [submodule "dune-pdelab"]
 	path = dune-pdelab
