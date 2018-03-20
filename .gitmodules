@@ -58,6 +58,3 @@
 [submodule "DuneRandomDiff"]
 	path = DuneRandomDiff
 	url = https://git.itwm.fhg.de/git/DuneRandomDiff/
-[submodule "dune-random-diff"]
-	path = dune-random-diff
-	url = https://git.itwm.fhg.de/git/DuneRandomDiff/
