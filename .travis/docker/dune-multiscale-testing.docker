@@ -1,24 +1,23 @@
-FROM dunecommunity/testing-base:master
-
-# COMPILER Selection (ARGS cannot be uppercase)
-ARG cc
-ARG cxx
-ENV CC $cc
-ENV CXX $cxx
+ARG BASE
+FROM dunecommunity/testing-base_${BASE}
 
 ENV MY_MODULE dune-multiscale
 
-WORKDIR ${SUPERDIR}
-ADD . ${SUPERDIR}
+ARG COMMIT
 
+RUN git clone https://github.com/wwu-numerik/dune-multiscale-super.git ${SUPERDIR} && \
+    cd ${SUPERDIR} && \
+    git checkout ${COMMIT} && \
+    git submodule foreach git reset --hard && \
+    git submodule update --init --recursive && \
+    git submodule status
+WORKDIR ${SUPERDIR}
+
+RUN apt update && apt install -y libfftw3-mpi-dev libfftw3-mpi3 libfftw3-dev || echo "on arch"
+RUN ${PACMAN_UPDATE} && fftw || echo "on debian"
 
 # TRAVIS before_install:
 ENV OPTS config.opts/travis.ninja
-
-RUN cd ${SUPERDIR}
-RUN git submodule foreach git reset --hard
-RUN git submodule update --init --recursive
-RUN git submodule status
 
 ENV PATH /usr/lib/ccache:${PATH}
 # our local scripts look for an OPTS env entry
