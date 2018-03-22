@@ -17,7 +17,6 @@ import importlib
 import os
 import stat
 import contextlib
-import jinja2
 from string import Template as stringTemplate
 import subprocess
 import sys
@@ -114,15 +113,15 @@ def _build_base(scriptdir, distro, cc, cxx, commit, refname):
     client = docker.from_env(version='auto')
     slug_postfix = '{}_{}'.format(distro, cc)
     logger = logging.getLogger('{}'.format(slug_postfix))
-    dockerdir = scriptdir
-    dockerfile = path.join(dockerdir, 'dune-multiscale-testing.docker')
+    dockerdir = path.join(scriptdir, 'dune-multiscale-testing')
+    dockerfile = path.join(dockerdir, 'Dockerfile')
     repo = 'dunecommunity/dune-multiscale-testing_{}'.format(slug_postfix)
     tag = '{}:{}'.format(repo, commit)
     logger.error(tag)
     with Timer('docker build ', logger.info):
         buildargs = {'COMMIT': commit, 'CC': cc, 'CXX': cxx, 'BASE': distro}
         img = _docker_build(client, rm=False, buildargs=buildargs,
-                            tag=tag, path=dockerdir, dockerfile=dockerfile)
+                            tag=tag, path=dockerdir)
         img.tag(repo, refname)
     with Timer('docker push ', logger.info):
         client.images.push(repo)
