@@ -81,8 +81,7 @@ def _docker_build(client, **kwargs):
     output = []
     for chunk in json_stream(resp):
         if 'error' in chunk:
-            msg = chunk['error'] + '\n' + ''.join(output)
-            raise docker.errors.BuildError(msg)
+            raise docker.errors.BuildError(chunk['error'], output)
         if 'stream' in chunk:
             output.append(chunk['stream'])
             match = re.search(
@@ -94,7 +93,7 @@ def _docker_build(client, **kwargs):
         last_event = chunk
     if image_id:
         return client.images.get(image_id)
-    raise docker.errors.BuildError(last_event or 'Unknown')
+    raise docker.errors.BuildError(last_event or 'Unknown', output)
 
 
 def _cmd(cmd, logger):
@@ -142,5 +141,4 @@ if __name__ == '__main__':
 
     all_compilers = {(f['base'], f['cc'], f['cxx']) for f in TAG_MATRIX.values()}
     base_imgs = [_build_base(scriptdir, base, cc, cxx, commit, refname) for base, cc, cxx in all_compilers]
-    client = docker.from_env(version='auto')
 
