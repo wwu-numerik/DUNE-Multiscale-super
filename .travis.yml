@@ -25,8 +25,8 @@ script:
   - python -c "from configparser import ConfigParser as sf ; f = sf() ; f.readfp(open('environments/debian-full/external-libraries.cfg', 'rt'))"
   - |
     if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] ; then
-        docker login --email=$DOCKER_HUB_EMAIL --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD
-        python ./.travis/docker/update_image.py -v
+        docker login --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD
+        travis_wait 40 python ./.travis/docker/update_image.py -v
     fi
 
 git:
