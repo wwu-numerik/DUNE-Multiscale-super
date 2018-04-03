@@ -48,7 +48,7 @@
 	url = https://github.com/dune-community/config.opts
 [submodule "dune-python"]
 	path = dune-python
-	url = https://gitlab.dune-project.org/renemilk/dune-python.git
+	url = https://gitlab.dune-project.org/rene.milk/dune-python.git
 [submodule "dune-testtools"]
 	path = dune-testtools
 	url = https://gitlab.dune-project.org/quality/dune-testtools.git
